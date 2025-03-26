@@ -32,6 +32,7 @@ class GardenActivity : ComponentActivity() {
 
         // Displaying edge-to-edge
         enableEdgeToEdge()
+        println("LWWW start activity")
         setContent {
             SunflowerTheme {
                 SunflowerApp()

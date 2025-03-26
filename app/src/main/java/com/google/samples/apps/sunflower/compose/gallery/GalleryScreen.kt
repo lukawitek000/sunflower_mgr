@@ -16,8 +16,8 @@
 
 package com.google.samples.apps.sunflower.compose.gallery
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -30,13 +30,12 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
-import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,18 +55,21 @@ import com.google.samples.apps.sunflower.data.UnsplashUser
 import com.google.samples.apps.sunflower.viewmodels.GalleryViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-
+// TODO check if it works
 @Composable
 fun GalleryScreen(
     viewModel: GalleryViewModel = hiltViewModel(),
     onPhotoClick: (UnsplashPhoto) -> Unit,
     onUpClick: () -> Unit,
 ) {
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
     GalleryScreen(
         plantPictures = viewModel.plantPictures,
         onPhotoClick = onPhotoClick,
         onUpClick = onUpClick,
         onPullToRefresh = viewModel::refreshData,
+        isRefreshing = isRefreshing,
+        endRefreshing = viewModel::endRefreshing
     )
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,19 +79,14 @@ private fun GalleryScreen(
     onPhotoClick: (UnsplashPhoto) -> Unit = {},
     onUpClick: () -> Unit = {},
     onPullToRefresh: () -> Unit,
+    isRefreshing: Boolean = false,
+    endRefreshing: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
             GalleryTopBar(onUpClick = onUpClick)
         },
     ) { padding ->
-
-        val pullToRefreshState = rememberPullToRefreshState()
-
-        if (pullToRefreshState.isRefreshing) {
-            onPullToRefresh()
-        }
-
         val pagingItems: LazyPagingItems<UnsplashPhoto> =
             plantPictures.collectAsLazyPagingItems()
 
@@ -97,15 +94,15 @@ private fun GalleryScreen(
             when (pagingItems.loadState.refresh) {
                 is  LoadState.Loading -> Unit
                 is LoadState.Error,is LoadState.NotLoading -> {
-                    pullToRefreshState.endRefresh()
+                    endRefreshing()
                 }
             }
         }
 
-        Box(
-            modifier = Modifier
-                .padding(padding)
-                .nestedScroll(pullToRefreshState.nestedScrollConnection)
+        PullToRefreshBox(
+            isRefreshing = isRefreshing,
+            onRefresh = onPullToRefresh,
+            modifier = Modifier.padding(padding).fillMaxSize()
         ) {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
@@ -121,11 +118,6 @@ private fun GalleryScreen(
                     }
                 }
             }
-
-            PullToRefreshContainer(
-                modifier = Modifier.align(Alignment.TopCenter),
-                state = pullToRefreshState
-            )
         }
     }
 }

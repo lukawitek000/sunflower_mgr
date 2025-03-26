@@ -24,12 +24,16 @@ import androidx.paging.cachedIn
 import com.google.samples.apps.sunflower.data.UnsplashPhoto
 import com.google.samples.apps.sunflower.data.UnsplashRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class GalleryViewModel @Inject constructor(
@@ -38,24 +42,30 @@ class GalleryViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var queryString: String? = savedStateHandle["plantName"]
-
-
     private val _plantPictures = MutableStateFlow<PagingData<UnsplashPhoto>?>(null)
     val plantPictures: Flow<PagingData<UnsplashPhoto>> get() = _plantPictures.filterNotNull()
+
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean> = _isRefreshing
 
     init {
         refreshData()
     }
 
-
     fun refreshData() {
-
+        _isRefreshing.update { true }
         viewModelScope.launch {
             try {
                 _plantPictures.value = repository.getSearchResultStream(queryString ?: "").cachedIn(viewModelScope).first()
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                _isRefreshing.update { false }
             }
         }
+    }
+
+    fun endRefreshing() {
+        _isRefreshing.update { false }
     }
 }
