@@ -16,8 +16,7 @@
 
 package com.google.samples.apps.sunflower.xml.views.data
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,18 +24,22 @@ import javax.inject.Singleton
 class GardenPlantingRepository @Inject constructor(
 ) {
 
-    suspend fun createGardenPlanting(plantId: String) {
+    fun createGardenPlanting(plantId: String) {
         val gardenPlanting = GardenPlanting(plantId)
-//        gardenPlantingDao.insertGardenPlanting(gardenPlanting)
+        FakeDatabase.addGardenPlanting(gardenPlanting)
     }
 
-    suspend fun removeGardenPlanting(gardenPlanting: GardenPlanting) {
-//        gardenPlantingDao.deleteGardenPlanting(gardenPlanting)
+    fun isPlanted(plantId: String) = FakeDatabase.gardenPlantings.map { gardenPlantings ->
+        gardenPlantings.any { it.plantId == plantId }
     }
 
-    fun isPlanted(plantId: String): Flow<Boolean> = flow {}
-//        gardenPlantingDao.isPlanted(plantId)
-
-    fun getPlantedGardens() = flow<List<PlantAndGardenPlantings>> {}
-        //gardenPlantingDao.getPlantedGardens()
+    fun getPlantedGardens() = FakeDatabase.gardenPlantings.map { gardenPlantings ->
+        val plants = FakeDatabase.plantList.filter {
+            plant -> gardenPlantings.any { plant.plantId == it.plantId }
+        }
+        val plantAndGardenPlantings = plants.map { plant ->
+            PlantAndGardenPlantings(plant, gardenPlantings.filter { it.plantId == plant.plantId })
+        }
+        plantAndGardenPlantings
+    }
 }
