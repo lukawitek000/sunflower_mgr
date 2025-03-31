@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.api
+package com.google.samples.apps.sunflower.xml.views.api
 
 import com.google.samples.apps.sunflower.BuildConfig
 import com.google.samples.apps.sunflower.data.UnsplashSearchResponse

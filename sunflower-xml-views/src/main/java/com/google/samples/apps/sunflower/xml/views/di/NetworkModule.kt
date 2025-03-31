@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.di
+package com.google.samples.apps.sunflower.xml.views.di
 
 import com.google.samples.apps.sunflower.api.UnsplashService
 import dagger.Module

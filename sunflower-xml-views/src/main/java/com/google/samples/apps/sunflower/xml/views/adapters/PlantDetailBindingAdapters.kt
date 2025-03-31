@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.adapters
+package com.google.samples.apps.sunflower.xml.views.adapters
 
 import android.text.method.LinkMovementMethod
 import android.widget.ImageView

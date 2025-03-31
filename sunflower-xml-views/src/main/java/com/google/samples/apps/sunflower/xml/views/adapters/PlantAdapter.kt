@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.adapters
+package com.google.samples.apps.sunflower.xml.views.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.samples.apps.sunflower.HomeViewPagerFragmentDirections
-import com.google.samples.apps.sunflower.PlantListFragment
+import com.google.samples.apps.sunflower.xml.views.PlantListFragment
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.databinding.ListItemPlantBinding
 

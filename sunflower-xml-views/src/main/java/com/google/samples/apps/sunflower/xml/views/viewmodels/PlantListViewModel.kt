@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.viewmodels
+package com.google.samples.apps.sunflower.xml.views.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.google.samples.apps.sunflower.PlantListFragment
+import com.google.samples.apps.sunflower.xml.views.PlantListFragment
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.data.PlantRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject

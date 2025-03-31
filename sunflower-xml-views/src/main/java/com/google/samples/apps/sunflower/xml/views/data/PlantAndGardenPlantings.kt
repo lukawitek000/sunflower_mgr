@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.data
+package com.google.samples.apps.sunflower.xml.views.data
 
 import androidx.room.Embedded
 import androidx.room.Relation

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.di
+package com.google.samples.apps.sunflower.xml.views.di
 
 import android.content.Context
 import com.google.samples.apps.sunflower.data.AppDatabase

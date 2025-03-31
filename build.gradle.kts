@@ -31,6 +31,7 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.spotless)
     alias(libs.plugins.ksp) apply false
+//    alias(libs.plugins.kapt) apply false
     alias(libs.plugins.android.test) apply false
     alias(libs.plugins.gradle.versions)
     alias(libs.plugins.version.catalog.update)

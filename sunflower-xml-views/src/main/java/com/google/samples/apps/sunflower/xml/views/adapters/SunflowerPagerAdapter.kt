@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.adapters
+package com.google.samples.apps.sunflower.xml.views.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.samples.apps.sunflower.GardenFragment
-import com.google.samples.apps.sunflower.PlantListFragment
+import com.google.samples.apps.sunflower.xml.views.PlantListFragment
 
 const val MY_GARDEN_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1

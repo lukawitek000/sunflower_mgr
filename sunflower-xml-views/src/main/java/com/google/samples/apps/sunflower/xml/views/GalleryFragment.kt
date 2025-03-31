@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower
+package com.google.samples.apps.sunflower.xml.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
