@@ -34,8 +34,6 @@ android {
     versionName = "0.1.6"
     vectorDrawables.useSupportLibrary = true
 
-    // Consult the README on instructions for setting up Unsplash API key
-    buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
     javaCompileOptions {
       annotationProcessorOptions {
         arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
@@ -115,10 +113,6 @@ dependencies {
   implementation(libs.androidx.paging.compose)
   implementation(libs.androidx.work.runtime.ktx)
   implementation(libs.material)
-  implementation(libs.gson)
-  implementation(libs.okhttp3.logging.interceptor)
-  implementation(libs.retrofit2.converter.gson)
-  implementation(libs.retrofit2)
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.core)
   implementation(libs.hilt.android)
@@ -142,26 +136,4 @@ dependencies {
   implementation(libs.glide)
   implementation(libs.accompanist.systemuicontroller)
   debugImplementation(libs.androidx.compose.ui.tooling)
-
-  // Testing dependencies
-  debugImplementation(libs.androidx.monitor)
-  kaptAndroidTest(libs.hilt.android.compiler)
-  androidTestImplementation(platform(libs.androidx.compose.bom))
-  androidTestImplementation(libs.androidx.arch.core.testing)
-  androidTestImplementation(libs.androidx.espresso.contrib)
-  androidTestImplementation(libs.androidx.espresso.core)
-  androidTestImplementation(libs.androidx.espresso.intents)
-  androidTestImplementation(libs.androidx.test.ext.junit)
-  androidTestImplementation(libs.androidx.test.uiautomator)
-  androidTestImplementation(libs.androidx.work.testing)
-  androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-  androidTestImplementation(libs.guava)
-  androidTestImplementation(libs.hilt.android.testing)
-  androidTestImplementation(libs.accessibility.test.framework)
-  androidTestImplementation(libs.kotlinx.coroutines.test)
-  testImplementation(libs.junit)
-}
-
-fun getUnsplashAccess(): String? {
-  return project.findProperty("unsplash_access_key") as? String
 }
