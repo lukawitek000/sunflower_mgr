@@ -20,17 +20,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 object FakeDatabase {
-    val plantList = PLANTS
+    val plantList = PLANTS + additionalPlants
 
     private val _gardenPlantings = MutableStateFlow<List<GardenPlanting>>(emptyList())
     val gardenPlantings = _gardenPlantings.asStateFlow()
 
     fun addGardenPlanting(gardenPlanting: GardenPlanting) {
         _gardenPlantings.value += gardenPlanting
-    }
-
-    fun removeGardenPlanting(gardenPlanting: GardenPlanting) {
-        _gardenPlantings.value -= gardenPlanting
     }
 }
 
@@ -170,5 +166,168 @@ private val PLANTS = listOf(
         growZoneNumber = 10,
         wateringInterval = 21,
         imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6d/Paperflower_--_Bougainvillea_glabra.jpg"
+    )
+)
+
+val additionalPlants = listOf(
+    Plant(
+        plantId = "mentha-piperita",
+        name = "Peppermint",
+        description = "Peppermint is a hybrid mint, a cross between watermint and spearmint. Indigenous to Europe and the Middle East, the plant is now widespread in cultivation in many regions of the world. It is occasionally found in the wild with its parent species.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Peppermint\">Wikipedia</a>)",
+        growZoneNumber = 3,
+        wateringInterval = 2,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Pfefferminze_natur_peppermint.jpg"
+    ),
+    Plant(
+        plantId = "lavandula-angustifolia",
+        name = "Lavender",
+        description = "Lavandula angustifolia, formerly L. officinalis, is a flowering plant in the family Lamiaceae, native to the Mediterranean. Its common names include lavender, true lavender or English lavender.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Lavandula_angustifolia\">Wikipedia</a>)",
+        growZoneNumber = 5,
+        wateringInterval = 14,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Single_lavender_flower02.jpg/1200px-Single_lavender_flower02.jpg"
+    ),
+    Plant(
+        plantId = "aloe-vera",
+        name = "Aloe Vera",
+        description = "Aloe vera is a succulent plant species of the genus Aloe. It is widely distributed, and is considered an invasive species in many world regions. An evergreen perennial, it originates from the Arabian Peninsula, but grows wild in tropical, semi-tropical, and arid climates around the world.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Aloe_vera\">Wikipedia</a>)",
+        growZoneNumber = 9,
+        wateringInterval = 21,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Cut_Aloe_Vera_Leaf.jpg/280px-Cut_Aloe_Vera_Leaf.jpg"
+    ),
+    Plant(
+        plantId = "ocimum-basilicum",
+        name = "Basil",
+        description = "Basil, also called great basil, is a culinary herb of the family Lamiaceae. Basil is native to tropical regions from central Africa to Southeast Asia. It is a tender plant, and is used in cuisines worldwide.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Basil\">Wikipedia</a>)",
+        growZoneNumber = 10,
+        wateringInterval = 3,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/90/Basil-Basilico-Ocimum_basilicum-albahaca.jpg"
+    ),
+    Plant(
+        plantId = "zea-mays",
+        name = "Corn",
+        description = "Maize, also known as corn, is a cereal grain first domesticated by indigenous peoples in southern Mexico about 10,000 years ago. The leafy stalk of the plant produces pollen inflorescences and separate ovuliferous inflorescences called ears that yield kernels or seeds, which are fruits.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Maize\">Wikipedia</a>)",
+        growZoneNumber = 4,
+        wateringInterval = 7,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/ZeaMays.jpg/250px-ZeaMays.jpg"
+    ),
+    Plant(
+        plantId = "cucumis-sativus",
+        name = "Cucumber",
+        description = "Cucumber is a widely-cultivated creeping vine plant in the Cucurbitaceae gourd family that bears cucumiform fruits, which are used as vegetables. There are three main varieties of cucumber—slicing, pickling, and seedless—within which several cultivars have been created.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Cucumber\">Wikipedia</a>)",
+        growZoneNumber = 4,
+        wateringInterval = 3,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/96/ARS_cucumber.jpg"
+    ),
+    Plant(
+        plantId = "fragaria-vesca",
+        name = "Strawberry",
+        description = "The garden strawberry is a widely grown hybrid species of the genus Fragaria, collectively known as the strawberries. It is cultivated worldwide for its fruit. The fruit is widely appreciated for its characteristic aroma, bright red color, juicy texture, and sweetness.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Strawberry\">Wikipedia</a>)",
+        growZoneNumber = 5,
+        wateringInterval = 4,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg/1200px-Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg"
+    ),
+    Plant(
+        plantId = "carica-papaya",
+        name = "Papaya",
+        description = "The papaya is the plant Carica papaya, one of the 22 accepted species in the genus Carica of the family Caricaceae. Its origin is in the tropics of the Americas, perhaps from southern Mexico and neighboring Central America.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Papaya\">Wikipedia</a>)",
+        growZoneNumber = 10,
+        wateringInterval = 5,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Carica_papaya_-_papaya_-_var-tropical_dwarf_papaya_-_desc-fruit.jpg/220px-Carica_papaya_-_papaya_-_var-tropical_dwarf_papaya_-_desc-fruit.jpg"
+    ),
+    Plant(
+        plantId = "allium-cepa",
+        name = "Onion",
+        description = "The onion, also known as the bulb onion or common onion, is a vegetable that is the most widely cultivated species of the genus Allium. Its close relatives include the garlic, shallot, leek, chive, and Chinese onion.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Onion\">Wikipedia</a>)",
+        growZoneNumber = 3,
+        wateringInterval = 5,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/25/Onion_on_White.JPG"
+    ),
+    Plant(
+        plantId = "capsicum-annuum",
+        name = "Bell Pepper",
+        description = "Capsicum annuum is a species of the plant genus Capsicum native to southern North America and northern South America. This species is the most common and extensively cultivated of the five domesticated capsicums.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Capsicum_annuum\">Wikipedia</a>)",
+        growZoneNumber = 9,
+        wateringInterval = 4,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Green-Yellow-Red-Pepper-2009.jpg/1200px-Green-Yellow-Red-Pepper-2009.jpg"
+    ),
+    Plant(
+        plantId = "daucus-carota",
+        name = "Carrot",
+        description = "The carrot is a root vegetable, usually orange in color, though purple, black, red, white, and yellow cultivars exist. They are a domesticated form of the wild carrot, Daucus carota, native to Europe and Southwestern Asia.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Carrot\">Wikipedia</a>)",
+        growZoneNumber = 3,
+        wateringInterval = 5,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Carrots_at_Ljubljana_Central_Market.JPG/401px-Carrots_at_Ljubljana_Central_Market.JPG"
+    ),
+    Plant(
+        plantId = "phaseolus-vulgaris",
+        name = "Green Bean",
+        description = "Phaseolus vulgaris, the common bean, is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit. The main categories of common beans, on the basis of use, are dry beans, snap beans and shell beans.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Phaseolus_vulgaris\">Wikipedia</a>)",
+        growZoneNumber = 2,
+        wateringInterval = 3,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Heaps_of_beans.jpg/1200px-Heaps_of_beans.jpg"
+    ),
+    Plant(
+        plantId = "spinacia-oleracea",
+        name = "Spinach",
+        description = "Spinach is a leafy green flowering plant native to central and western Asia. It is of the order Caryophyllales, family Amaranthaceae, subfamily Chenopodioideae. Its leaves are a common edible vegetable consumed either fresh, or after storage using preservation techniques by canning, freezing, or dehydration.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Spinach\">Wikipedia</a>)",
+        growZoneNumber = 2,
+        wateringInterval = 3,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/37/Spinacia_oleracea_Spinazie_bloeiend.jpg"
+    ),
+    Plant(
+        plantId = "brassica-oleracea",
+        name = "Broccoli",
+        description = "Broccoli is an edible green plant in the cabbage family whose large flowering head, stalk and small associated leaves are eaten as a vegetable. Broccoli is classified in the Italica cultivar group of the species Brassica oleracea.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Broccoli\">Wikipedia</a>)",
+        growZoneNumber = 3,
+        wateringInterval = 5,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/0/03/Broccoli_and_cross_section_edit.jpg"
+    ),
+    Plant(
+        plantId = "cucurbita-pepo",
+        name = "Pumpkin",
+        description = "Cucurbita pepo is a cultivated plant of the genus Cucurbita. It yields varieties of winter squash and pumpkin, but the most widespread varieties belong to the subspecies Cucurbita pepo subsp. pepo, called summer squash.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Cucurbita_pepo\">Wikipedia</a>)",
+        growZoneNumber = 3,
+        wateringInterval = 7,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/99/Pumpkins.jpg"
+    ),
+    Plant(
+        plantId = "allium-sativum",
+        name = "Garlic",
+        description = "Garlic is a species in the onion genus, Allium. Its close relatives include the onion, shallot, leek, chive, and Chinese onion. It is native to Central Asia and northeastern Iran, and has long been a common seasoning worldwide, with a history of several thousand years of human consumption and use.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Garlic\">Wikipedia</a>)",
+        growZoneNumber = 4,
+        wateringInterval = 7,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Garlic_whole.jpg/220px-Garlic_whole.jpg"
+    ),
+    Plant(
+        plantId = "mentha-spicata",
+        name = "Spearmint",
+        description = "Spearmint, also known as garden mint, common mint, lamb mint and mackerel mint, is a species of mint, Mentha spicata, native to Europe and southern temperate Asia, extending from Ireland in the west to southern China in the east.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Spearmint\">Wikipedia</a>)",
+        growZoneNumber = 3,
+        wateringInterval = 2,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/0/05/Minze.jpg"
+    ),
+    Plant(
+        plantId = "petroselinum-crispum",
+        name = "Parsley",
+        description = "Parsley or garden parsley is a species of flowering plant in the family Apiaceae that is native to the central and eastern Mediterranean region, but has been naturalized elsewhere in Europe, and is widely cultivated as a herb, and a vegetable.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Parsley\">Wikipedia</a>)",
+        growZoneNumber = 2,
+        wateringInterval = 3,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Petroselinum.jpg/1200px-Petroselinum.jpg"
+    ),
+    Plant(
+        plantId = "prunus-persica",
+        name = "Peach",
+        description = "The peach is a deciduous tree native to the region of Northwest China between the Tarim Basin and the north slopes of the Kunlun Mountains, where it was first domesticated and cultivated. It bears an edible juicy fruit called a peach or a nectarine.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Peach\">Wikipedia</a>)",
+        growZoneNumber = 5,
+        wateringInterval = 10,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/9e/Autumn_Red_peaches.jpg"
+    ),
+    Plant(
+        plantId = "rubus-idaeus",
+        name = "Raspberry",
+        description = "The raspberry is the edible fruit of a multitude of plant species in the genus Rubus of the rose family, most of which are in the subgenus Idaeobatus. The name also applies to these plants themselves. Raspberries are perennial with woody stems.<br><br>(From <a href=\"https://en.wikipedia.org/wiki/Raspberry\">Wikipedia</a>)",
+        growZoneNumber = 4,
+        wateringInterval = 5,
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Fert%C5%91di_k%C3%A1rmin_m%C3%A1lna.JPG/220px-Fert%C5%91di_k%C3%A1rmin_m%C3%A1lna.JPG"
     )
 )
