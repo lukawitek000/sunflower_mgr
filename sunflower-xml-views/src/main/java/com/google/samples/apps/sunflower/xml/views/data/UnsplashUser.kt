@@ -16,8 +16,6 @@
 
 package com.google.samples.apps.sunflower.xml.views.data
 
-import com.google.gson.annotations.SerializedName
-
 /**
  * Data class that represents a user from Unsplash.
  *
@@ -26,8 +24,8 @@ import com.google.gson.annotations.SerializedName
  * [here](https://unsplash.com/documentation#get-a-users-public-profile).
  */
 data class UnsplashUser(
-    @field:SerializedName("name") val name: String,
-    @field:SerializedName("username") val username: String
+    val name: String,
+    val username: String
 ) {
     val attributionUrl: String
         get() {
