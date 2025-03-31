@@ -19,6 +19,10 @@ buildscript {
         google()
         mavenCentral()
     }
+
+    dependencies {
+        classpath(libs.androidx.navigation.safeargs)
+    }
 }
 
 plugins {
