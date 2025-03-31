@@ -49,7 +49,7 @@ class PlantDetailViewModel @Inject constructor(
         }
     }
 
-    fun hasValidUnsplashKey() = (BuildConfig.UNSPLASH_ACCESS_KEY != "null")
+    fun hasValidUnsplashKey() = true
 
     companion object {
         private const val PLANT_ID_SAVED_STATE_KEY = "plantId"

@@ -19,16 +19,15 @@ package com.google.samples.apps.sunflower.xml.views.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.google.samples.apps.sunflower.xml.views.api.UnsplashService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class UnsplashRepository @Inject constructor(private val service: UnsplashService) {
+class UnsplashRepository @Inject constructor() {
 
     fun getSearchResultStream(query: String): Flow<PagingData<UnsplashPhoto>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
-            pagingSourceFactory = { UnsplashPagingSource(service, query) }
+            pagingSourceFactory = { UnsplashPagingSource(query) }
         ).flow
     }
 

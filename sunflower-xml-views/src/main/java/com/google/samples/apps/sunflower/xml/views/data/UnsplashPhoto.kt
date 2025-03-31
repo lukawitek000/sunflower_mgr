@@ -16,8 +16,6 @@
 
 package com.google.samples.apps.sunflower.xml.views.data
 
-import com.google.gson.annotations.SerializedName
-
 /**
  * Data class that represents a photo from Unsplash.
  *
@@ -26,7 +24,7 @@ import com.google.gson.annotations.SerializedName
  * [here](https://unsplash.com/documentation#get-a-photo).
  */
 data class UnsplashPhoto(
-    @field:SerializedName("id") val id: String,
-    @field:SerializedName("urls") val urls: UnsplashPhotoUrls,
-    @field:SerializedName("user") val user: UnsplashUser
+    val id: String,
+    val urls: UnsplashPhotoUrls,
+    val user: UnsplashUser
 )
