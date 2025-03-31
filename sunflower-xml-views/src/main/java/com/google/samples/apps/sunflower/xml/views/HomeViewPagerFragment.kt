@@ -23,10 +23,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.samples.apps.sunflower.adapters.MY_GARDEN_PAGE_INDEX
-import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
-import com.google.samples.apps.sunflower.adapters.SunflowerPagerAdapter
-import com.google.samples.apps.sunflower.databinding.FragmentViewPagerBinding
+import com.google.samples.apps.sunflower.xml.views.adapters.MY_GARDEN_PAGE_INDEX
+import com.google.samples.apps.sunflower.xml.views.adapters.PLANT_LIST_PAGE_INDEX
+import com.google.samples.apps.sunflower.xml.views.adapters.SunflowerPagerAdapter
+import com.google.samples.apps.sunflower.xml.views.databinding.FragmentViewPagerBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

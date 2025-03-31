@@ -16,6 +16,7 @@
 
 package com.google.samples.apps.sunflower.xml.views.data
 
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,12 +27,20 @@ import javax.inject.Singleton
  * query execution off of the main thread.
  */
 @Singleton
-class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
+class PlantRepository @Inject constructor() {
 
-    fun getPlants() = plantDao.getPlants()
+    fun getPlants() = flow<List<Plant>> {
+        emit(FakeDatabase.plantList)
+    }
+        //plantDao.getPlants()
 
-    fun getPlant(plantId: String) = plantDao.getPlant(plantId)
+    fun getPlant(plantId: String) = flow<Plant?> {
+        FakeDatabase.plantList.firstOrNull { it.plantId == plantId }?.let {
+            emit(it)
+        }
+    }
+        // plantDao.getPlant(plantId)
 
-    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
-        plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
+    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) = flow<List<Plant>> {}
+//        plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
 }

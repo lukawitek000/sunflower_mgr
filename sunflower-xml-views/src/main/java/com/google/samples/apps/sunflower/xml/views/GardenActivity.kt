@@ -19,7 +19,7 @@ package com.google.samples.apps.sunflower.xml.views
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
-import com.google.samples.apps.sunflower.databinding.ActivityGardenBinding
+import com.google.samples.apps.sunflower.xml.views.databinding.ActivityGardenBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

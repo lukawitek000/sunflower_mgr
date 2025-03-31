@@ -18,7 +18,7 @@ package com.google.samples.apps.sunflower.xml.views.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.google.samples.apps.sunflower.api.UnsplashService
+import com.google.samples.apps.sunflower.xml.views.api.UnsplashService
 
 private const val UNSPLASH_STARTING_PAGE_INDEX = 1
 

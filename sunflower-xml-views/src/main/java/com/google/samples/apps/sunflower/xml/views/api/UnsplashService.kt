@@ -16,8 +16,8 @@
 
 package com.google.samples.apps.sunflower.xml.views.api
 
-import com.google.samples.apps.sunflower.BuildConfig
-import com.google.samples.apps.sunflower.data.UnsplashSearchResponse
+import com.google.samples.apps.sunflower.xml.views.BuildConfig
+import com.google.samples.apps.sunflower.xml.views.data.UnsplashSearchResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level

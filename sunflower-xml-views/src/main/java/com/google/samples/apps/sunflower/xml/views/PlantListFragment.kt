@@ -25,9 +25,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.samples.apps.sunflower.adapters.PlantAdapter
-import com.google.samples.apps.sunflower.databinding.FragmentPlantListBinding
-import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
+import com.google.samples.apps.sunflower.xml.views.adapters.PlantAdapter
+import com.google.samples.apps.sunflower.xml.views.databinding.FragmentPlantListBinding
+import com.google.samples.apps.sunflower.xml.views.viewmodels.PlantListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

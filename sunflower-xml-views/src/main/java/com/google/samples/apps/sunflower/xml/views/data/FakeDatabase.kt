@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,15 @@
 
 package com.google.samples.apps.sunflower.xml.views.data
 
-import androidx.room.TypeConverter
-import java.util.Calendar
+object FakeDatabase {
+    private val _plantList = mutableListOf<Plant>()
+    val plantList: List<Plant>
+        get() = _plantList
 
-/**
- * Type converters to allow Room to reference complex data types.
- */
-class Converters {
-    @TypeConverter fun calendarToDatestamp(calendar: Calendar): Long = calendar.timeInMillis
+    fun insertAll(plants: List<Plant>) {
+        _plantList.addAll(plants)
+    }
 
-    @TypeConverter fun datestampToCalendar(value: Long): Calendar =
-        Calendar.getInstance().apply { timeInMillis = value }
+
+
 }
