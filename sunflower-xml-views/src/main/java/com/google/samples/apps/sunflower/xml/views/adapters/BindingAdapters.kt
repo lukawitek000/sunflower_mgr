@@ -14,22 +14,16 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.xml.views.adapters
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+import android.view.View
+import androidx.databinding.BindingAdapter
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
+@BindingAdapter("isGone")
+fun bindIsGone(view: View, isGone: Boolean) {
+    view.visibility = if (isGone) {
+        View.GONE
+    } else {
+        View.VISIBLE
+    }
+}

@@ -14,22 +14,10 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.xml.views.utilities
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
-
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
+/**
+ * Constants used throughout the app.
+ */
+const val DATABASE_NAME = "sunflower-db"
+const val PLANT_DATA_FILENAME = "plants.json"

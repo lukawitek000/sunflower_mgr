@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.xml.views.data
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+object FakeDatabase {
+    private val _plantList = mutableListOf<Plant>()
+    val plantList: List<Plant>
+        get() = _plantList
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
+    fun insertAll(plants: List<Plant>) {
+        _plantList.addAll(plants)
+    }
+
+
+
+}

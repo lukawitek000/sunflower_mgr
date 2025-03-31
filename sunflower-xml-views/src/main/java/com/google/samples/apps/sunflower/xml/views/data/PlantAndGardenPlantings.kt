@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.xml.views.data
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+/**
+ * This class captures the relationship between a [Plant] and a user's [GardenPlanting], which is
+ * used by Room to fetch the related entities.
+ */
+data class PlantAndGardenPlantings(
+    val plant: Plant,
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
+    val gardenPlantings: List<GardenPlanting> = emptyList()
+)

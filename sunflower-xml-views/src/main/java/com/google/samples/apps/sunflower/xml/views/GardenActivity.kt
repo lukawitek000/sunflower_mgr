@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.xml.views
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil.setContentView
+import com.google.samples.apps.sunflower.xml.views.databinding.ActivityGardenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
+@AndroidEntryPoint
+class GardenActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView<ActivityGardenBinding>(this, R.layout.activity_garden)
+    }
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.xml.views.di
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+import com.google.samples.apps.sunflower.xml.views.api.UnsplashService
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
+@InstallIn(SingletonComponent::class)
+@Module
+class NetworkModule {
+
+    @Singleton
+    @Provides
+    fun provideUnsplashService(): UnsplashService {
+        return UnsplashService.create()
+    }
+}

@@ -1,0 +1,120 @@
+/*
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    namespace "com.google.samples.apps.sunflower.xml.views"
+    compileSdkVersion libs.versions.compileSdk.get().toInteger()
+    buildFeatures {
+        dataBinding true
+        buildConfig true
+    }
+    defaultConfig {
+        applicationId "com.google.samples.apps.sunflower.xml.views"
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdk.get().toInteger()
+        testInstrumentationRunner "com.google.samples.apps.sunflower.utilities.MainTestRunner"
+        versionCode 1
+        versionName "0.1.6"
+        vectorDrawables.useSupportLibrary true
+
+        // Consult the README on instructions for setting up Unsplash API key
+        buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
+            }
+        }
+    }
+    buildTypes {
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        benchmark {
+            initWith buildTypes.release
+            signingConfig signingConfigs.debug
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-rules-benchmark.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        // work-runtime-ktx 2.1.0 and above now requires Java 8
+        jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
+    packagingOptions {
+        // Multiple dependency bring these files in. Exclude them to enable
+        // our test APK to build (has no effect on our AARs)
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
+    }
+}
+
+dependencies {
+
+//    kapt(libs.androidx.room.compiler)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.material)
+    implementation(libs.gson)
+    implementation(libs.okhttp3.logging.interceptor)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.retrofit2)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.profileinstaller)
+    kapt "com.github.bumptech.glide:compiler:4.13.1"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.1"
+    implementation "androidx.fragment:fragment-ktx:1.8.6"
+    def navigationVersion = libs.versions.navigation.get()
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.paging:paging-runtime-ktx:3.3.6"
+//    def roomVersion = libs.versions.room.get()
+//    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "com.github.bumptech.glide:glide:4.13.1"
+    implementation "androidx.tracing:tracing-ktx:1.2.0"
+//    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0"
+
+//    runtimeOnly 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0'
+//    implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0")
+}
+
+def getUnsplashAccess() {
+    return project.findProperty("unsplash_access_key")
+}
