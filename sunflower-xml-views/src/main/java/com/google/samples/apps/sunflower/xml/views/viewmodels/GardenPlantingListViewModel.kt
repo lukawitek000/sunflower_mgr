@@ -26,8 +26,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GardenPlantingListViewModel @Inject internal constructor(
-    gardenPlantingRepository: com.google.samples.apps.sunflower.common.data.GardenPlantingRepository
+    gardenPlantingRepository: GardenPlantingRepository
 ) : ViewModel() {
-    val plantAndGardenPlantings: LiveData<List<com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings>> =
+    val plantAndGardenPlantings: LiveData<List<PlantAndGardenPlantings>> =
         gardenPlantingRepository.getPlantedGardens().asLiveData()
 }

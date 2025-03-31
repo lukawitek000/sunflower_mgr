@@ -31,7 +31,7 @@ import com.google.samples.apps.sunflower.xml.views.databinding.ListItemPlantBind
 /**
  * Adapter for the [RecyclerView] in [PlantListFragment].
  */
-class PlantAdapter : ListAdapter<com.google.samples.apps.sunflower.common.data.Plant, RecyclerView.ViewHolder>(PlantDiffCallback()) {
+class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlantViewHolder(
@@ -60,7 +60,7 @@ class PlantAdapter : ListAdapter<com.google.samples.apps.sunflower.common.data.P
         }
 
         private fun navigateToPlant(
-            plant: com.google.samples.apps.sunflower.common.data.Plant,
+            plant: Plant,
             view: View
         ) {
             val direction =
@@ -70,7 +70,7 @@ class PlantAdapter : ListAdapter<com.google.samples.apps.sunflower.common.data.P
             view.findNavController().navigate(direction)
         }
 
-        fun bind(item: com.google.samples.apps.sunflower.common.data.Plant) {
+        fun bind(item: Plant) {
             binding.apply {
                 plant = item
                 executePendingBindings()
@@ -79,13 +79,13 @@ class PlantAdapter : ListAdapter<com.google.samples.apps.sunflower.common.data.P
     }
 }
 
-private class PlantDiffCallback : DiffUtil.ItemCallback<com.google.samples.apps.sunflower.common.data.Plant>() {
+private class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
 
-    override fun areItemsTheSame(oldItem: com.google.samples.apps.sunflower.common.data.Plant, newItem: com.google.samples.apps.sunflower.common.data.Plant): Boolean {
+    override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
         return oldItem.plantId == newItem.plantId
     }
 
-    override fun areContentsTheSame(oldItem: com.google.samples.apps.sunflower.common.data.Plant, newItem: com.google.samples.apps.sunflower.common.data.Plant): Boolean {
+    override fun areContentsTheSame(oldItem: Plant, newItem: Plant): Boolean {
         return oldItem == newItem
     }
 }

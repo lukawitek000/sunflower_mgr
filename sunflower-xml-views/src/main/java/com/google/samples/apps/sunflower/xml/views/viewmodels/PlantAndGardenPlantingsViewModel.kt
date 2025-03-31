@@ -20,7 +20,7 @@ import com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class PlantAndGardenPlantingsViewModel(plantings: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings) {
+class PlantAndGardenPlantingsViewModel(plantings: PlantAndGardenPlantings) {
     private val plant = checkNotNull(plantings.plant)
     private val gardenPlanting = plantings.gardenPlantings[0]
 

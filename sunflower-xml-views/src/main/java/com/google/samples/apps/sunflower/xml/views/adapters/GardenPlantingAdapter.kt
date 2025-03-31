@@ -31,7 +31,7 @@ import com.google.samples.apps.sunflower.xml.views.databinding.ListItemGardenPla
 import com.google.samples.apps.sunflower.xml.views.viewmodels.PlantAndGardenPlantingsViewModel
 
 class GardenPlantingAdapter :
-    ListAdapter<com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder>(
+    ListAdapter<PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder>(
         GardenPlantDiffCallback()
     ) {
 
@@ -67,7 +67,7 @@ class GardenPlantingAdapter :
             view.findNavController().navigate(direction)
         }
 
-        fun bind(plantings: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings) {
+        fun bind(plantings: PlantAndGardenPlantings) {
             with(binding) {
                 viewModel = PlantAndGardenPlantingsViewModel(plantings)
                 executePendingBindings()
@@ -76,18 +76,18 @@ class GardenPlantingAdapter :
     }
 }
 
-private class GardenPlantDiffCallback : DiffUtil.ItemCallback<com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings>() {
+private class GardenPlantDiffCallback : DiffUtil.ItemCallback<PlantAndGardenPlantings>() {
 
     override fun areItemsTheSame(
-        oldItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings,
-        newItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
+        oldItem: PlantAndGardenPlantings,
+        newItem: PlantAndGardenPlantings
     ): Boolean {
         return oldItem.plant.plantId == newItem.plant.plantId
     }
 
     override fun areContentsTheSame(
-        oldItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings,
-        newItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
+        oldItem: PlantAndGardenPlantings,
+        newItem: PlantAndGardenPlantings
     ): Boolean {
         return oldItem.plant == newItem.plant
     }

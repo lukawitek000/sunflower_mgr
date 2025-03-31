@@ -35,7 +35,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class PlantListViewModel @Inject internal constructor(
-    plantRepository: com.google.samples.apps.sunflower.common.data.PlantRepository,
+    plantRepository: PlantRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -43,7 +43,7 @@ class PlantListViewModel @Inject internal constructor(
         savedStateHandle.get(GROW_ZONE_SAVED_STATE_KEY) ?: NO_GROW_ZONE
     )
 
-    val plants: LiveData<List<com.google.samples.apps.sunflower.common.data.Plant>> = growZone.flatMapLatest { zone ->
+    val plants: LiveData<List<Plant>> = growZone.flatMapLatest { zone ->
         if (zone == NO_GROW_ZONE) {
             plantRepository.getPlants()
         } else {

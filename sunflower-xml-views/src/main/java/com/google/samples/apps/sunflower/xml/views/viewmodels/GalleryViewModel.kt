@@ -28,14 +28,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GalleryViewModel @Inject constructor(
-    private val repository: com.google.samples.apps.sunflower.common.data.UnsplashRepository
+    private val repository: UnsplashRepository
 ) : ViewModel() {
     private var currentQueryValue: String? = null
-    private var currentSearchResult: Flow<PagingData<com.google.samples.apps.sunflower.common.data.UnsplashPhoto>>? = null
+    private var currentSearchResult: Flow<PagingData<UnsplashPhoto>>? = null
 
-    fun searchPictures(queryString: String): Flow<PagingData<com.google.samples.apps.sunflower.common.data.UnsplashPhoto>> {
+    fun searchPictures(queryString: String): Flow<PagingData<UnsplashPhoto>> {
         currentQueryValue = queryString
-        val newResult: Flow<PagingData<com.google.samples.apps.sunflower.common.data.UnsplashPhoto>> =
+        val newResult: Flow<PagingData<UnsplashPhoto>> =
             repository.getSearchResultStream(queryString).cachedIn(viewModelScope)
         currentSearchResult = newResult
         return newResult

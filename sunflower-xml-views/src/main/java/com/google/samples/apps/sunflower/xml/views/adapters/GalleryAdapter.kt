@@ -30,7 +30,7 @@ import com.google.samples.apps.sunflower.xml.views.databinding.ListItemPhotoBind
  * Adapter for the [RecyclerView] in [GalleryFragment].
  */
 
-class GalleryAdapter : PagingDataAdapter<com.google.samples.apps.sunflower.common.data.UnsplashPhoto, GalleryAdapter.GalleryViewHolder>(GalleryDiffCallback()) {
+class GalleryAdapter : PagingDataAdapter<UnsplashPhoto, GalleryAdapter.GalleryViewHolder>(GalleryDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {
         return GalleryViewHolder(
@@ -62,7 +62,7 @@ class GalleryAdapter : PagingDataAdapter<com.google.samples.apps.sunflower.commo
             }
         }
 
-        fun bind(item: com.google.samples.apps.sunflower.common.data.UnsplashPhoto) {
+        fun bind(item: UnsplashPhoto) {
             binding.apply {
                 photo = item
                 executePendingBindings()
@@ -71,12 +71,12 @@ class GalleryAdapter : PagingDataAdapter<com.google.samples.apps.sunflower.commo
     }
 }
 
-private class GalleryDiffCallback : DiffUtil.ItemCallback<com.google.samples.apps.sunflower.common.data.UnsplashPhoto>() {
-    override fun areItemsTheSame(oldItem: com.google.samples.apps.sunflower.common.data.UnsplashPhoto, newItem: com.google.samples.apps.sunflower.common.data.UnsplashPhoto): Boolean {
+private class GalleryDiffCallback : DiffUtil.ItemCallback<UnsplashPhoto>() {
+    override fun areItemsTheSame(oldItem: UnsplashPhoto, newItem: UnsplashPhoto): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: com.google.samples.apps.sunflower.common.data.UnsplashPhoto, newItem: com.google.samples.apps.sunflower.common.data.UnsplashPhoto): Boolean {
+    override fun areContentsTheSame(oldItem: UnsplashPhoto, newItem: UnsplashPhoto): Boolean {
         return oldItem == newItem
     }
 }

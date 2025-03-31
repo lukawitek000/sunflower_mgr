@@ -34,8 +34,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PlantDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    plantRepository: com.google.samples.apps.sunflower.common.data.PlantRepository,
-    private val gardenPlantingRepository: com.google.samples.apps.sunflower.common.data.GardenPlantingRepository,
+    plantRepository: PlantRepository,
+    private val gardenPlantingRepository: GardenPlantingRepository,
 ) : ViewModel() {
 
     val plantId: String = savedStateHandle.get<String>(PLANT_ID_SAVED_STATE_KEY)!!
