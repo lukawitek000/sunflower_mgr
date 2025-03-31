@@ -35,7 +35,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
 import com.google.samples.apps.sunflower.R
-import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.common.data.Plant
 
 @Composable
 fun PlantListScreen(

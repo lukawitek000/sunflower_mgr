@@ -17,7 +17,7 @@
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
-  alias(libs.plugins.ksp)
+  alias(libs.plugins.kapt)
   alias(libs.plugins.hilt)
   alias(libs.plugins.compose.compiler)
 }
@@ -105,14 +105,14 @@ androidComponents {
 }
 
 dependencies {
-  ksp(libs.androidx.room.compiler)
-  ksp(libs.hilt.android.compiler)
+  implementation(project(":common"))
+
+  kapt(libs.hilt.android.compiler)
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.livedata.ktx)
   implementation(libs.androidx.lifecycle.viewmodel.ktx)
   implementation(libs.androidx.navigation.compose)
   implementation(libs.androidx.paging.compose)
-  implementation(libs.androidx.room.ktx)
   implementation(libs.androidx.work.runtime.ktx)
   implementation(libs.material)
   implementation(libs.gson)
@@ -145,7 +145,7 @@ dependencies {
 
   // Testing dependencies
   debugImplementation(libs.androidx.monitor)
-  kspAndroidTest(libs.hilt.android.compiler)
+  kaptAndroidTest(libs.hilt.android.compiler)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.arch.core.testing)
   androidTestImplementation(libs.androidx.espresso.contrib)

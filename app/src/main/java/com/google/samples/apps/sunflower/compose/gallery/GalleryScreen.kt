@@ -49,9 +49,9 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.compose.plantlist.PhotoListItem
-import com.google.samples.apps.sunflower.data.UnsplashPhoto
-import com.google.samples.apps.sunflower.data.UnsplashPhotoUrls
-import com.google.samples.apps.sunflower.data.UnsplashUser
+import com.google.samples.apps.sunflower.common.data.UnsplashPhoto
+import com.google.samples.apps.sunflower.common.data.UnsplashPhotoUrls
+import com.google.samples.apps.sunflower.common.data.UnsplashUser
 import com.google.samples.apps.sunflower.viewmodels.GalleryViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
