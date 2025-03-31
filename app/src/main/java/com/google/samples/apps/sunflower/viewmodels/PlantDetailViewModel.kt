@@ -23,8 +23,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.sunflower.BuildConfig
-import com.google.samples.apps.sunflower.data.GardenPlantingRepository
-import com.google.samples.apps.sunflower.data.PlantRepository
+import com.google.samples.apps.sunflower.common.data.GardenPlantingRepository
+import com.google.samples.apps.sunflower.common.data.PlantRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -66,7 +66,7 @@ class PlantDetailViewModel @Inject constructor(
         _showSnackbar.value = false
     }
 
-    fun hasValidUnsplashKey() = (BuildConfig.UNSPLASH_ACCESS_KEY != "null")
+    fun hasValidUnsplashKey() = true
 
     companion object {
         private const val PLANT_ID_SAVED_STATE_KEY = "plantId"

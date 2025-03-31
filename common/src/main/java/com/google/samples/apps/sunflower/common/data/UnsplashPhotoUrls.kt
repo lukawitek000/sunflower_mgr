@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.common.data
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
-
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
-include(":common")
+/**
+ * Data class that represents URLs available for a Unsplash photo.
+ *
+ * Although several photo sizes are available, this project uses only uses the `small` sized photo.
+ * For more details, consult the API documentation
+ * [here](https://unsplash.com/documentation#example-image-use).
+ */
+data class UnsplashPhotoUrls(
+    val small: String
+)

@@ -20,8 +20,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.google.samples.apps.sunflower.xml.views.data.UnsplashPhoto
-import com.google.samples.apps.sunflower.xml.views.data.UnsplashRepository
+import com.google.samples.apps.sunflower.common.data.UnsplashPhoto
+import com.google.samples.apps.sunflower.common.data.UnsplashRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

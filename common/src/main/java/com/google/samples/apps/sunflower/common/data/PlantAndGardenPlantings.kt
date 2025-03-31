@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,14 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.common.data
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+/**
+ * This class captures the relationship between a [Plant] and a user's [GardenPlanting], which is
+ * used by Room to fetch the related entities.
+ */
+data class PlantAndGardenPlantings(
+    val plant: Plant,
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
-include(":common")
+    val gardenPlantings: List<GardenPlanting> = emptyList()
+)

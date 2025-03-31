@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,17 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.google.samples.apps.sunflower.common.data
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
-
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
-include(":common")
+/**
+ * Data class that represents a photo from Unsplash.
+ *
+ * Not all of the fields returned from the API are represented here; only the ones used in this
+ * project are listed below. For a full list of fields, consult the API documentation
+ * [here](https://unsplash.com/documentation#get-a-photo).
+ */
+data class UnsplashPhoto(
+    val id: String,
+    val urls: UnsplashPhotoUrls,
+    val user: UnsplashUser
+)

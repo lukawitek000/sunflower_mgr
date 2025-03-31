@@ -34,7 +34,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.samples.apps.sunflower.xml.views.PlantDetailFragment.Callback
 import com.google.samples.apps.sunflower.xml.views.databinding.FragmentPlantDetailBinding
 import com.google.samples.apps.sunflower.xml.views.viewmodels.PlantDetailViewModel
-import com.google.samples.apps.sunflower.xml.views.data.Plant
+import com.google.samples.apps.sunflower.common.data.Plant
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -152,6 +152,6 @@ class PlantDetailFragment : Fragment() {
     }
 
     fun interface Callback {
-        fun add(plant: Plant?)
+        fun add(plant: com.google.samples.apps.sunflower.common.data.Plant?)
     }
 }
