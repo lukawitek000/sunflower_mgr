@@ -33,3 +33,4 @@ dependencyResolutionManagement {
 include(":app")
 include(":macrobenchmark")
 include(":sunflower-xml-views")
+include(":common")
