@@ -18,14 +18,14 @@
 
     <!-- To see how these attributes are used, please visit https://material.io/develop/android/theming/color/ -->
     <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/sunflower_green_500</item>
-        <item name="colorOnPrimary">@color/sunflower_yellow_500</item>
-        <item name="colorPrimaryDark">@color/sunflower_green_700</item>
-        <item name="colorOnSurface">@color/sunflower_black</item>
+        <item name="colorPrimary">#FF246D00</item>
+        <item name="colorOnPrimary">#FFFFFFFF</item>
+        <item name="colorPrimaryDark">#FF8BDA67</item>
+        <item name="colorOnSurface">#FF1A1C18</item>
         <item name="colorAccent">@color/sunflower_green_700</item>
-        <item name="colorSurface">@color/sunflower_gray_50</item>
-        <item name="colorSecondary">@color/sunflower_yellow_500</item>
-        <item name="android:colorBackground">@color/sunflower_green_500</item>
+        <item name="colorSurface">#FFFDFDF6</item>
+        <item name="colorSecondary">#FF55624C</item>
+        <item name="android:colorBackground">#FFFDFDF6</item>
     </style>
 
     <style name="Theme.Sunflower" parent="Base.Theme.Sunflower"/>
@@ -40,5 +40,17 @@
     <style name="TextAppearance.Sunflower.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
+
+<!--    <style name="TextAppearance.Sunflower.Default">-->
+<!--        -->
+<!--    </style>-->
+
+<!--    <style name="TextAppearance.Sunflower.HeadlineSmall" parent="TextAppearance.MaterialComponents.Headline5">-->
+<!--        <item name="fontFamily">sans-serif</item>-->
+<!--        <item name="android:textSize">24sp</item>-->
+<!--        <item name="fontWeight">400</item>-->
+<!--        <item name="lineHeight">32sp</item>-->
+<!--        <item name="android:letterSpacing">0.0</item>-->
+<!--    </style>-->
 
 </resources>
