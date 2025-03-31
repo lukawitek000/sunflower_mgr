@@ -77,6 +77,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)

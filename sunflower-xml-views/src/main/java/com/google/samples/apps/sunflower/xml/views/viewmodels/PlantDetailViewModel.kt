@@ -22,8 +22,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.sunflower.xml.views.BuildConfig
 import com.google.samples.apps.sunflower.xml.views.PlantDetailFragment
-import com.google.samples.apps.sunflower.xml.views.data.GardenPlantingRepository
-import com.google.samples.apps.sunflower.xml.views.data.PlantRepository
+import com.google.samples.apps.sunflower.common.data.GardenPlantingRepository
+import com.google.samples.apps.sunflower.common.data.PlantRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,8 +34,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PlantDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    plantRepository: PlantRepository,
-    private val gardenPlantingRepository: GardenPlantingRepository,
+    plantRepository: com.google.samples.apps.sunflower.common.data.PlantRepository,
+    private val gardenPlantingRepository: com.google.samples.apps.sunflower.common.data.GardenPlantingRepository,
 ) : ViewModel() {
 
     val plantId: String = savedStateHandle.get<String>(PLANT_ID_SAVED_STATE_KEY)!!

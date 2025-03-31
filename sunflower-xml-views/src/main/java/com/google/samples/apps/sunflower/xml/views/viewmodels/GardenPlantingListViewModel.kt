@@ -19,15 +19,15 @@ package com.google.samples.apps.sunflower.xml.views.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.google.samples.apps.sunflower.xml.views.data.GardenPlantingRepository
-import com.google.samples.apps.sunflower.xml.views.data.PlantAndGardenPlantings
+import com.google.samples.apps.sunflower.common.data.GardenPlantingRepository
+import com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class GardenPlantingListViewModel @Inject internal constructor(
-    gardenPlantingRepository: GardenPlantingRepository
+    gardenPlantingRepository: com.google.samples.apps.sunflower.common.data.GardenPlantingRepository
 ) : ViewModel() {
-    val plantAndGardenPlantings: LiveData<List<PlantAndGardenPlantings>> =
+    val plantAndGardenPlantings: LiveData<List<com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings>> =
         gardenPlantingRepository.getPlantedGardens().asLiveData()
 }

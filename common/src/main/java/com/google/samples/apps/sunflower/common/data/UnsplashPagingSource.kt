@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.xml.views.data
+package com.google.samples.apps.sunflower.common.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.google.samples.apps.sunflower.xml.views.api.FakeUnsplashService
+import com.google.samples.apps.sunflower.common.api.FakeUnsplashService
 
 private const val UNSPLASH_STARTING_PAGE_INDEX = 1
 
@@ -32,12 +32,12 @@ class UnsplashPagingSource(
             require(query == "Apple") {
                 "Fake response for unsplash service available only for Apple"
             }
-            val photos = FakeUnsplashService.queryApplePhotos(page, params.loadSize)
+            val photos = com.google.samples.apps.sunflower.common.api.FakeUnsplashService.queryApplePhotos(page, params.loadSize)
 
             LoadResult.Page(
                 data = photos,
                 prevKey = if (page == UNSPLASH_STARTING_PAGE_INDEX) null else page - 1,
-                nextKey = if (page == FakeUnsplashService.totalPages) null else page + 1
+                nextKey = if (page == com.google.samples.apps.sunflower.common.api.FakeUnsplashService.totalPages) null else page + 1
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)

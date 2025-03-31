@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.xml.views.api
+package com.google.samples.apps.sunflower.common.api
 
-import com.google.samples.apps.sunflower.xml.views.data.UnsplashPhoto
-import com.google.samples.apps.sunflower.xml.views.data.UnsplashPhotoUrls
-import com.google.samples.apps.sunflower.xml.views.data.UnsplashUser
+import com.google.samples.apps.sunflower.common.data.UnsplashPhoto
+import com.google.samples.apps.sunflower.common.data.UnsplashPhotoUrls
+import com.google.samples.apps.sunflower.common.data.UnsplashUser
 
 object FakeUnsplashService {
 

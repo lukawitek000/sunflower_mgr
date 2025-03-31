@@ -25,13 +25,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.samples.apps.sunflower.xml.views.HomeViewPagerFragmentDirections
 import com.google.samples.apps.sunflower.xml.views.PlantListFragment
-import com.google.samples.apps.sunflower.xml.views.data.Plant
+import com.google.samples.apps.sunflower.common.data.Plant
 import com.google.samples.apps.sunflower.xml.views.databinding.ListItemPlantBinding
 
 /**
  * Adapter for the [RecyclerView] in [PlantListFragment].
  */
-class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallback()) {
+class PlantAdapter : ListAdapter<com.google.samples.apps.sunflower.common.data.Plant, RecyclerView.ViewHolder>(PlantDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlantViewHolder(
@@ -60,7 +60,7 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
         }
 
         private fun navigateToPlant(
-            plant: Plant,
+            plant: com.google.samples.apps.sunflower.common.data.Plant,
             view: View
         ) {
             val direction =
@@ -70,7 +70,7 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
             view.findNavController().navigate(direction)
         }
 
-        fun bind(item: Plant) {
+        fun bind(item: com.google.samples.apps.sunflower.common.data.Plant) {
             binding.apply {
                 plant = item
                 executePendingBindings()
@@ -79,13 +79,13 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
     }
 }
 
-private class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
+private class PlantDiffCallback : DiffUtil.ItemCallback<com.google.samples.apps.sunflower.common.data.Plant>() {
 
-    override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
+    override fun areItemsTheSame(oldItem: com.google.samples.apps.sunflower.common.data.Plant, newItem: com.google.samples.apps.sunflower.common.data.Plant): Boolean {
         return oldItem.plantId == newItem.plantId
     }
 
-    override fun areContentsTheSame(oldItem: Plant, newItem: Plant): Boolean {
+    override fun areContentsTheSame(oldItem: com.google.samples.apps.sunflower.common.data.Plant, newItem: com.google.samples.apps.sunflower.common.data.Plant): Boolean {
         return oldItem == newItem
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.xml.views.data
+package com.google.samples.apps.sunflower.common.data
 
 /**
- * Data class that represents a user from Unsplash.
+ * Data class that represents a photo from Unsplash.
  *
  * Not all of the fields returned from the API are represented here; only the ones used in this
  * project are listed below. For a full list of fields, consult the API documentation
- * [here](https://unsplash.com/documentation#get-a-users-public-profile).
+ * [here](https://unsplash.com/documentation#get-a-photo).
  */
-data class UnsplashUser(
-    val name: String,
-    val username: String
-) {
-    val attributionUrl: String
-        get() {
-            return "https://unsplash.com/$username?utm_source=sunflower&utm_medium=referral"
-        }
-}
+data class UnsplashPhoto(
+    val id: String,
+    val urls: UnsplashPhotoUrls,
+    val user: UnsplashUser
+)

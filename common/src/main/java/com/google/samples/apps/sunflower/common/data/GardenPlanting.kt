@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.xml.views.data
+package com.google.samples.apps.sunflower.common.data
 
 import java.util.Calendar
 

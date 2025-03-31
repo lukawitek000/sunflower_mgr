@@ -26,12 +26,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.samples.apps.sunflower.xml.views.R
 import com.google.samples.apps.sunflower.xml.views.HomeViewPagerFragmentDirections
-import com.google.samples.apps.sunflower.xml.views.data.PlantAndGardenPlantings
+import com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
 import com.google.samples.apps.sunflower.xml.views.databinding.ListItemGardenPlantingBinding
 import com.google.samples.apps.sunflower.xml.views.viewmodels.PlantAndGardenPlantingsViewModel
 
 class GardenPlantingAdapter :
-    ListAdapter<PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder>(
+    ListAdapter<com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder>(
         GardenPlantDiffCallback()
     ) {
 
@@ -67,7 +67,7 @@ class GardenPlantingAdapter :
             view.findNavController().navigate(direction)
         }
 
-        fun bind(plantings: PlantAndGardenPlantings) {
+        fun bind(plantings: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings) {
             with(binding) {
                 viewModel = PlantAndGardenPlantingsViewModel(plantings)
                 executePendingBindings()
@@ -76,18 +76,18 @@ class GardenPlantingAdapter :
     }
 }
 
-private class GardenPlantDiffCallback : DiffUtil.ItemCallback<PlantAndGardenPlantings>() {
+private class GardenPlantDiffCallback : DiffUtil.ItemCallback<com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings>() {
 
     override fun areItemsTheSame(
-        oldItem: PlantAndGardenPlantings,
-        newItem: PlantAndGardenPlantings
+        oldItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings,
+        newItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
     ): Boolean {
         return oldItem.plant.plantId == newItem.plant.plantId
     }
 
     override fun areContentsTheSame(
-        oldItem: PlantAndGardenPlantings,
-        newItem: PlantAndGardenPlantings
+        oldItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings,
+        newItem: com.google.samples.apps.sunflower.common.data.PlantAndGardenPlantings
     ): Boolean {
         return oldItem.plant == newItem.plant
     }
