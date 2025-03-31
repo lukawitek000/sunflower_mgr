@@ -23,6 +23,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.samples.apps.sunflower.xml.views.adapters.PlantAdapter
@@ -34,6 +35,23 @@ import dagger.hilt.android.AndroidEntryPoint
 class PlantListFragment : Fragment() {
 
     private val viewModel: PlantListViewModel by viewModels()
+
+    private val menuProvider = object : MenuProvider {
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+            menuInflater.inflate(R.menu.menu_plant_list, menu)
+        }
+
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+            return when (menuItem.itemId) {
+                R.id.filter_zone -> {
+                    updateData()
+                    true
+                }
+                else -> false
+            }
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,22 +65,8 @@ class PlantListFragment : Fragment() {
         binding.plantList.adapter = adapter
         subscribeUi(adapter)
 
-        setHasOptionsMenu(true)
+        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_plant_list, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.filter_zone -> {
-                updateData()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun subscribeUi(adapter: PlantAdapter) {

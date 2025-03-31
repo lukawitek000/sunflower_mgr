@@ -32,15 +32,16 @@ class PlantRepository @Inject constructor() {
     fun getPlants() = flow<List<Plant>> {
         emit(FakeDatabase.plantList)
     }
-        //plantDao.getPlants()
 
     fun getPlant(plantId: String) = flow<Plant?> {
         FakeDatabase.plantList.firstOrNull { it.plantId == plantId }?.let {
             emit(it)
         }
     }
-        // plantDao.getPlant(plantId)
 
-    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) = flow<List<Plant>> {}
-//        plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
+    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) = flow<List<Plant>> {
+        FakeDatabase.plantList.filter { it.growZoneNumber == growZoneNumber }.let {
+            emit(it)
+        }
+    }
 }
