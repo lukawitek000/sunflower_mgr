@@ -36,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_detail_back_no_circle"
+                app:titleTextColor="@color/sunflower_black"
+                android:background="@color/sunflower_surface"
                 app:title="@string/gallery_title" />
             
         </com.google.android.material.appbar.AppBarLayout>

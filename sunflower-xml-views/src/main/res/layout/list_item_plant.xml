@@ -36,6 +36,7 @@
         android:onClick="@{clickListener}"
         app:cardElevation="@dimen/card_elevation"
         app:cardPreventCornerOverlap="false"
+        app:cardBackgroundColor="#FFD8E7CB"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Sunflower.Card">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +61,9 @@
                     android:layout_marginBottom="@dimen/margin_normal"
                     android:layout_marginTop="@dimen/margin_normal"
                     android:text="@{plant.name}"
-                    android:textAppearance="?attr/textAppearanceListItem"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
                     android:gravity="center_horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

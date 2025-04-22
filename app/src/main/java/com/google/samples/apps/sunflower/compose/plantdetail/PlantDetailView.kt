@@ -96,6 +96,7 @@ import com.google.samples.apps.sunflower.compose.visible
 import com.google.samples.apps.sunflower.common.data.Plant
 import com.google.samples.apps.sunflower.databinding.ItemPlantDescriptionBinding
 import com.google.samples.apps.sunflower.ui.SunflowerTheme
+import com.google.samples.apps.sunflower.ui.md_theme_light_inversePrimary
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
 
 /**
@@ -335,7 +336,9 @@ private fun PlantFab(
         // Semantics in parent due to https://issuetracker.google.com/184825850
         modifier = modifier.semantics {
             contentDescription = addPlantContentDescription
-        }
+        },
+        containerColor = md_theme_light_inversePrimary
+
     ) {
         Icon(
             Icons.Filled.Add,
