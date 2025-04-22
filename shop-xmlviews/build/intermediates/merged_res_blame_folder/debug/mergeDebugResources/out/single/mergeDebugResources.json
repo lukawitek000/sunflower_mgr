@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-debug-34:/layout_activity_main.xml.flat",
+        "source": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-debug-34:/drawable_shop_icon.xml.flat",
+        "source": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-36:/drawable/shop_icon.xml"
+    }
+]

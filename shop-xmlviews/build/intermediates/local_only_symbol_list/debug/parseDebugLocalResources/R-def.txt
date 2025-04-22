@@ -1,0 +1,10 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable shop_icon
+id main
+layout activity_main
+string app_name
+style Base.Theme.Sunflower_mgr
+style Theme.Sunflower_mgr
