@@ -60,6 +60,11 @@ class DetailsFragment: Fragment() {
 
     private fun populateUi(product: Product) {
         (activity as MainActivity).setToolbarTitle(product.name)
+        with(binding) {
+            priceTv.text = getString(R.string.price_template, product.price)
+            stockTv.text = getString(R.string.stock_template, product.availableAmount)
+            descriptionTv.text = product.description
+        }
     }
 
     override fun onDestroyView() {
