@@ -3,8 +3,13 @@ local
 color black
 color white
 drawable shop_icon
+id fragment_container
 id main
+id products_rv
+id search_view
+id toolbar
 layout activity_main
+layout product_list_fragment
 string app_name
 style Base.Theme.Sunflower_mgr
 style Theme.Sunflower_mgr

@@ -3773,6 +3773,7 @@ int id fixed 0x7f0800c7
 int id flip 0x7f0800c8
 int id floating 0x7f0800c9
 int id forever 0x7f0800ca
+int id fragment_container 0x7f080205
 int id fragment_container_view_tag 0x7f0800cb
 int id frost 0x7f0800cc
 int id fullscreen_header 0x7f0800cd
@@ -3936,6 +3937,7 @@ int id pin 0x7f08016a
 int id position 0x7f08016b
 int id postLayout 0x7f08016c
 int id pressed 0x7f08016d
+int id products_rv 0x7f080208
 int id progress_circular 0x7f08016e
 int id progress_horizontal 0x7f08016f
 int id radio 0x7f080170
@@ -3969,6 +3971,7 @@ int id search_go_btn 0x7f08018b
 int id search_mag_icon 0x7f08018c
 int id search_plate 0x7f08018d
 int id search_src_text 0x7f08018e
+int id search_view 0x7f080206
 int id search_voice_btn 0x7f08018f
 int id select_dialog_listview 0x7f080190
 int id selected 0x7f080191
@@ -4047,6 +4050,7 @@ int id title 0x7f0801d9
 int id titleDividerNoCustom 0x7f0801da
 int id title_template 0x7f0801db
 int id toggle 0x7f0801dc
+int id toolbar 0x7f080207
 int id top 0x7f0801dd
 int id topPanel 0x7f0801de
 int id top_center 0x7f0801df
@@ -4279,6 +4283,7 @@ int layout notification_template_custom_big 0x7f0b0066
 int layout notification_template_icon_group 0x7f0b0067
 int layout notification_template_part_chronometer 0x7f0b0068
 int layout notification_template_part_time 0x7f0b0069
+int layout product_list_fragment 0x7f0b006e
 int layout select_dialog_item_material 0x7f0b006a
 int layout select_dialog_multichoice_material 0x7f0b006b
 int layout select_dialog_singlechoice_material 0x7f0b006c

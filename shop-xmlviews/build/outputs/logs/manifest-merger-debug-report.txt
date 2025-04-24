@@ -4,6 +4,7 @@ ADDED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-x
 INJECTED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-xmlviews/src/main/AndroidManifest.xml:2:1-21:12
 INJECTED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-xmlviews/src/main/AndroidManifest.xml:2:1-21:12
 INJECTED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-xmlviews/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.databinding:viewbinding:8.9.1] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/a2c8ad2b41b35890c3f2e6f376edb507/transformed/viewbinding-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.13.0-alpha12] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/43ff62931e58616d1ed46f65ed0c6296/transformed/material-1.13.0-alpha12/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/8945289ed50e9db6823a06e4de5eefd5/transformed/constraintlayout-2.2.1/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/040116247585ec539b10a15db1084d6f/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
@@ -108,6 +109,8 @@ uses-sdk
 INJECTED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-xmlviews/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-xmlviews/src/main/AndroidManifest.xml
 INJECTED from /Users/lukaszwitkowski/master_studies/magisterka/sunflower_mgr/shop-xmlviews/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:8.9.1] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/a2c8ad2b41b35890c3f2e6f376edb507/transformed/viewbinding-8.9.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.9.1] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/a2c8ad2b41b35890c3f2e6f376edb507/transformed/viewbinding-8.9.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.material:material:1.13.0-alpha12] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/43ff62931e58616d1ed46f65ed0c6296/transformed/material-1.13.0-alpha12/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.13.0-alpha12] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/43ff62931e58616d1ed46f65ed0c6296/transformed/material-1.13.0-alpha12/AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/8945289ed50e9db6823a06e4de5eefd5/transformed/constraintlayout-2.2.1/AndroidManifest.xml:5:5-44
