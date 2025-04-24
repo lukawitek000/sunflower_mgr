@@ -1,14 +1,18 @@
 [
     {
-        "merged": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-33:/layout/product_list_fragment.xml",
-        "source": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-36:/layout/product_list_fragment.xml"
+        "merged": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-39:/layout/product_list_fragment.xml",
+        "source": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-42:/layout/product_list_fragment.xml"
     },
     {
-        "merged": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-33:/layout/activity_main.xml",
-        "source": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-36:/layout/activity_main.xml"
+        "merged": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-39:/layout/product_card.xml",
+        "source": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-42:/layout/product_card.xml"
     },
     {
-        "merged": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-33:/layout/product_list_fragment.xml",
-        "source": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-36:/layout/product_list_fragment.xml"
+        "merged": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-39:/layout/product_list_fragment.xml",
+        "source": "com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-42:/layout/product_list_fragment.xml"
+    },
+    {
+        "merged": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-mergeDebugResources-39:/layout/activity_main.xml",
+        "source": "/Users/lukaszwitkowski/.gradle/daemon/8.11.1/com.lukasz.witkowski.schedule.shopxmlviews.shop-xmlviews-main-42:/layout/activity_main.xml"
     }
 ]

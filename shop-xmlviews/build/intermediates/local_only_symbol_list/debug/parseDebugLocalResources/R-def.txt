@@ -2,13 +2,21 @@ R_DEF: Internal format may change without notice
 local
 color black
 color white
+dimen recycler_view_spacing
+drawable arrow_right
+drawable placeholder_car
 drawable shop_icon
 id fragment_container
+id imageButton
 id main
+id name_tv
+id product_iv
 id products_rv
 id search_view
+id short_descrption_tv
 id toolbar
 layout activity_main
+layout product_card
 layout product_list_fragment
 string app_name
 style Base.Theme.Sunflower_mgr
