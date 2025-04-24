@@ -10,10 +10,14 @@ dimen recycler_view_spacing
 drawable arrow_right
 drawable placeholder_car
 drawable shop_icon
-id fragment_container
+id action_productListFragment_to_detailsFragment
+id detailsFragment
 id imageButton
 id main
 id name_tv
+id nav_graph
+id nav_host
+id productListFragment
 id product_iv
 id products_rv
 id search_view
@@ -24,6 +28,7 @@ layout activity_main
 layout details_fragment
 layout product_card
 layout product_list_fragment
+navigation nav_graph
 string app_name
 style Base.Theme.Sunflower_mgr
 style Theme.Sunflower_mgr

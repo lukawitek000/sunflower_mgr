@@ -27,6 +27,7 @@ import androidx.fragment.app.replace
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -82,18 +83,7 @@ class ProductListFragment : Fragment() {
 
     private fun navigateToDetailsScreen(product: Product) {
         viewModel.selectProduct(product)
-        val detailsFragment = DetailsFragment.newInstance()
-        parentFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left,
-                R.anim.slide_in_left,
-                R.anim.slide_out_right
-            )
-            .replace(R.id.fragment_container, detailsFragment)
-            .addToBackStack(null)
-            .commit()
+        findNavController().navigate(R.id.action_productListFragment_to_detailsFragment)
     }
 
     private fun setUpSearchView() {
@@ -117,13 +107,6 @@ class ProductListFragment : Fragment() {
             if (parent.getChildAdapterPosition(view) == parent.adapter?.itemCount?.minus(1)) {
                 outRect.bottom = space // optional: space after last item
             }
-        }
-    }
-
-
-    companion object {
-        fun newInstance(): ProductListFragment {
-            return ProductListFragment()
         }
     }
 }

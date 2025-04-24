@@ -5,12 +5,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private var _binging: ActivityMainBinding? = null
     private val binding get() = _binging!!
+    private var navController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,14 +30,16 @@ class MainActivity : AppCompatActivity() {
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
 
-        val productListFragment = ProductListFragment.newInstance()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, productListFragment)
-            .commit()
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        navController = navHostFragment.navController
+        setupActionBarWithNavController(navController!!)
     }
 
     fun setToolbarTitle(title: String) {
         supportActionBar?.title = title
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController?.navigateUp() == true || super.onSupportNavigateUp()
     }
 }

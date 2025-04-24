@@ -22,7 +22,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.DetailsFragmentBinding
+import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
+import kotlinx.coroutines.launch
 
 class DetailsFragment: Fragment() {
 
@@ -39,26 +44,26 @@ class DetailsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DetailsFragmentBinding.inflate(inflater, container, false)
-        (activity as MainActivity).setToolbarTitle("Product details")
-        populateUi()
+        observeCurrentProduct()
         return binding.root
     }
 
-    private fun populateUi() {
-        val product = viewModel.selectedProduct.value ?: return
-        binding.apply {
-            textView.text = "Product details: ${product.name}"
+    private fun observeCurrentProduct() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.selectedProduct.collect {
+                    populateUi(product = it)
+                }
+            }
         }
+    }
+
+    private fun populateUi(product: Product) {
+        (activity as MainActivity).setToolbarTitle(product.name)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance(): DetailsFragment {
-            return DetailsFragment()
-        }
     }
 }

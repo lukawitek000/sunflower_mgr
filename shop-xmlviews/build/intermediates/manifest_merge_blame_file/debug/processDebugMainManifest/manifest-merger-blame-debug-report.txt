@@ -82,43 +82,56 @@
 49-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
 50        </provider>
 51
-52        <receiver
-52-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
-53            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-53-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
-54            android:directBootAware="false"
-54-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
-55            android:enabled="true"
-55-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
-56            android:exported="true"
-56-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
-57            android:permission="android.permission.DUMP" >
-57-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
-58            <intent-filter>
-58-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
-59                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-59-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
-59-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
-60            </intent-filter>
-61            <intent-filter>
-61-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
-62                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-62-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
-62-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
-63            </intent-filter>
-64            <intent-filter>
-64-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
-65                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-65-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
-65-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
-66            </intent-filter>
-67            <intent-filter>
-67-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
-68                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-68-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
-68-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
-69            </intent-filter>
-70        </receiver>
-71    </application>
-72
-73</manifest>
+52        <uses-library
+52-->[androidx.window:window:1.0.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/997c85f378ab941487fbbaeb7c17ea47/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+53            android:name="androidx.window.extensions"
+53-->[androidx.window:window:1.0.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/997c85f378ab941487fbbaeb7c17ea47/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+54            android:required="false" />
+54-->[androidx.window:window:1.0.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/997c85f378ab941487fbbaeb7c17ea47/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+55        <uses-library
+55-->[androidx.window:window:1.0.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/997c85f378ab941487fbbaeb7c17ea47/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+56            android:name="androidx.window.sidecar"
+56-->[androidx.window:window:1.0.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/997c85f378ab941487fbbaeb7c17ea47/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+57            android:required="false" />
+57-->[androidx.window:window:1.0.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/997c85f378ab941487fbbaeb7c17ea47/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+58
+59        <receiver
+59-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+60            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+60-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+61            android:directBootAware="false"
+61-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+62            android:enabled="true"
+62-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+63            android:exported="true"
+63-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+64            android:permission="android.permission.DUMP" >
+64-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+65            <intent-filter>
+65-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+66                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+66-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+66-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+67            </intent-filter>
+68            <intent-filter>
+68-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+69                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+69-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+69-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+70            </intent-filter>
+71            <intent-filter>
+71-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+72                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+72-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+72-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+73            </intent-filter>
+74            <intent-filter>
+74-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+75                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+75-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+75-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/lukaszwitkowski/.gradle/caches/8.11.1/transforms/4ff250f1d89544822ce1aaaeec0f11e2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+76            </intent-filter>
+77        </receiver>
+78    </application>
+79
+80</manifest>
