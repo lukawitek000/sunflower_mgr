@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.replace
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -30,6 +31,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.ProductListFragmentBinding
+import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 import kotlinx.coroutines.launch
 
 class ProductListFragment : Fragment() {
@@ -67,9 +69,7 @@ class ProductListFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         productsAdapter = ProductsAdapter(
-            onProductClicked = {
-                viewModel.selectProduct(it)
-            }
+            onProductClicked = ::navigateToDetailsScreen
         )
         val pixels = resources.getDimensionPixelSize(R.dimen.recycler_view_spacing)
         val spacing = ItemSpacingDecoration(pixels)
@@ -78,6 +78,22 @@ class ProductListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(spacing)
         }
+    }
+
+    private fun navigateToDetailsScreen(product: Product) {
+        viewModel.selectProduct(product)
+        val detailsFragment = DetailsFragment.newInstance()
+        parentFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .replace(R.id.fragment_container, detailsFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun setUpSearchView() {

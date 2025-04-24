@@ -1,5 +1,9 @@
 R_DEF: Internal format may change without notice
 local
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
 color black
 color white
 dimen recycler_view_spacing
@@ -14,8 +18,10 @@ id product_iv
 id products_rv
 id search_view
 id short_descrption_tv
+id textView
 id toolbar
 layout activity_main
+layout details_fragment
 layout product_card
 layout product_list_fragment
 string app_name
