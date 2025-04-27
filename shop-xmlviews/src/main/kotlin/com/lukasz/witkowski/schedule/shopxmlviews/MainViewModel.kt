@@ -17,10 +17,14 @@
 package com.lukasz.witkowski.schedule.shopxmlviews
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.lukasz.witkowski.schedule.shopxmlviews.model.ALL_PRODUCTS
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.seconds
 
 class MainViewModel : ViewModel() {
 
@@ -28,13 +32,28 @@ class MainViewModel : ViewModel() {
     val products: StateFlow<List<Product>>
         get() = _products
 
-    private var _selectedProduct = MutableStateFlow<Product?>(null)
+    private var _selectedProduct = MutableStateFlow(ALL_PRODUCTS.first())
     val selectedProduct: StateFlow<Product>
-        get() = _selectedProduct as StateFlow<Product>
-    // TODO how to do it above
+        get() = _selectedProduct
+
+    private val _buyingStatus = MutableStateFlow(BuyingStatus.IDLE)
+    val buyingStatus: StateFlow<BuyingStatus>
+        get() = _buyingStatus
 
     fun selectProduct(product: Product) {
         _selectedProduct.value = product
+    }
+
+    fun buyProduct() {
+        viewModelScope.launch {
+            _buyingStatus.value = BuyingStatus.LOADING
+            delay(5.seconds)
+            _buyingStatus.value = BuyingStatus.SUCCESS
+        }
+    }
+
+    enum class BuyingStatus {
+        IDLE, LOADING, SUCCESS
     }
 
 }

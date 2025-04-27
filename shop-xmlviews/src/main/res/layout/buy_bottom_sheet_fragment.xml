@@ -15,8 +15,9 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomSheetLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -37,7 +38,7 @@
         tools:text="Price" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
+        android:id="@+id/amount"
         style="@style/Widget.Material3.TextInputLayout.FilledBox"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
@@ -53,7 +54,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
+        android:id="@+id/additionalInfo"
         style="@style/Widget.Material3.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

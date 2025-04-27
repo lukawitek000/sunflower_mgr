@@ -16,10 +16,13 @@
 
 package com.lukasz.witkowski.schedule.shopxmlviews
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -30,7 +33,7 @@ import com.lukasz.witkowski.schedule.shopxmlviews.databinding.BuyBottomSheetFrag
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 import kotlinx.coroutines.launch
 
-class BuyBottomSheetFragment: BottomSheetDialogFragment() {
+class BuyBottomSheetFragment : BottomSheetDialogFragment() {
 
     private val viewModel by activityViewModels<MainViewModel>()
     private var _binding: BuyBottomSheetFragmentBinding? = null
@@ -39,6 +42,10 @@ class BuyBottomSheetFragment: BottomSheetDialogFragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
+    private var rotateAnimator: ObjectAnimator? = null
+    private var moveToCenterAnimator: ObjectAnimator? = null
+    private var animatorSet: AnimatorSet? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,7 +53,61 @@ class BuyBottomSheetFragment: BottomSheetDialogFragment() {
     ): View {
         _binding = BuyBottomSheetFragmentBinding.inflate(inflater, container, false)
         observeCurrentProduct()
+        observeBuyingStatus()
         return binding.root
+    }
+
+    private fun observeBuyingStatus() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.buyingStatus.collect {
+                    when (it) {
+                        MainViewModel.BuyingStatus.IDLE -> Unit // do nothing
+                        MainViewModel.BuyingStatus.LOADING -> {
+                            binding.bottomSheetButton.isEnabled = false
+                            binding.amount.isEnabled = false
+                            binding.additionalInfo.isEnabled = false
+                            startRotation()
+                        }
+
+                        MainViewModel.BuyingStatus.SUCCESS -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Bought successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            dismiss()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun startRotation() {
+        val rotatingButton = binding.bottomSheetButton
+        val moveUpDistance = -rotatingButton.width.toFloat()
+
+        val translationYAnimator = ObjectAnimator.ofFloat(
+            rotatingButton,
+            "translationY",
+            rotatingButton.translationY,
+            rotatingButton.translationY + moveUpDistance
+        )
+            .apply { duration = 500 } // Adjust duration as needed
+
+        // Create rotation animator
+        rotateAnimator = ObjectAnimator.ofFloat(rotatingButton, "rotation", 0f, 360f).apply {
+            duration = 2000
+            repeatCount = ObjectAnimator.INFINITE
+            interpolator = LinearInterpolator()
+        }
+
+        // Combine the translation and rotation animations
+        animatorSet = AnimatorSet().apply {
+            playTogether(translationYAnimator, rotateAnimator)
+            start()
+        }
     }
 
     private fun observeCurrentProduct() {
@@ -63,14 +124,15 @@ class BuyBottomSheetFragment: BottomSheetDialogFragment() {
         with(binding) {
             bottomSheetPrice.text = getString(R.string.price_template, product.price)
             bottomSheetButton.setOnClickListener {
-                Toast.makeText(context, "Buying car", Toast.LENGTH_SHORT).show()
-                dismiss()
+                viewModel.buyProduct()
             }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        rotateAnimator?.cancel()
+        rotateAnimator = null
         _binding = null
     }
 
