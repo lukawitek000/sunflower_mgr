@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -68,7 +69,7 @@ class ProductListFragment : Fragment() {
     private fun observeData() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.products.collect {
+                viewModel.displayedProducts.collect {
                     productsAdapter.submitList(it)
                 }
             }
@@ -94,7 +95,12 @@ class ProductListFragment : Fragment() {
     }
 
     private fun setUpSearchView() {
-        binding.searchView.apply {
+        binding.apply {
+            searchBar.editText?.addTextChangedListener(
+                onTextChanged = { text, _, _, _ ->
+                    viewModel.updateSearchQuery(text.toString())
+                }
+            )
         }
     }
 

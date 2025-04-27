@@ -53,6 +53,16 @@ class FilterFragment : Fragment() {
                 }
             }
         }
+        viewModel.filterSettings.value.let {
+            binding.rangeSlider.values = listOf(it.minPrice, it.maxPrice)
+            when(it.sortType) {
+                MainViewModel.SortType.PriceLowToHigh -> binding.radioButton1.isChecked = true
+                MainViewModel.SortType.PriceHighToLow -> binding.radioButton2.isChecked = true
+                MainViewModel.SortType.NewestFirst -> binding.radioButton3.isChecked = true
+                MainViewModel.SortType.OldestFirst -> binding.radioButton4.isChecked = true
+                MainViewModel.SortType.None -> binding.radioGroup.clearCheck()
+            }
+        }
         return binding.root
     }
 
@@ -88,11 +98,11 @@ class FilterFragment : Fragment() {
                 val minPrice = rangeSlider.values[0]
                 val maxPrice = rangeSlider.values[1]
                 val sortType = when (radioGroup.checkedRadioButtonId) {
-                    R.id.radioButton1 -> MainViewModel.SortType.PRICE_LOW_TO_HIGH
-                    R.id.radioButton2 -> MainViewModel.SortType.PRICE_HIGH_TO_LOW
-                    R.id.radioButton3 -> MainViewModel.SortType.NEWEST_FIRST
-                    R.id.radioButton4 -> MainViewModel.SortType.OLDEST_FIRST
-                    else -> MainViewModel.SortType.NONE
+                    R.id.radioButton1 -> MainViewModel.SortType.PriceLowToHigh
+                    R.id.radioButton2 -> MainViewModel.SortType.PriceHighToLow
+                    R.id.radioButton3 -> MainViewModel.SortType.NewestFirst
+                    R.id.radioButton4 -> MainViewModel.SortType.OldestFirst
+                    else -> MainViewModel.SortType.None
                 }
                 viewModel.applyFiltering(minPrice, maxPrice, sortType)
                 findNavController().navigateUp()
