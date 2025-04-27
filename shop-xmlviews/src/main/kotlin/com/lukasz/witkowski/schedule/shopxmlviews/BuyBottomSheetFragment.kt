@@ -20,20 +20,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.lukasz.witkowski.schedule.shopxmlviews.databinding.DetailsFragmentBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.lukasz.witkowski.schedule.shopxmlviews.databinding.BuyBottomSheetFragmentBinding
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 import kotlinx.coroutines.launch
 
-class DetailsFragment: Fragment() {
+class BuyBottomSheetFragment: BottomSheetDialogFragment() {
 
     private val viewModel by activityViewModels<MainViewModel>()
-    private var _binding: DetailsFragmentBinding? = null
-    private val binding: DetailsFragmentBinding
+    private var _binding: BuyBottomSheetFragmentBinding? = null
+    private val binding: BuyBottomSheetFragmentBinding
         get() = checkNotNull(_binding) {
             "Cannot access binding because it is null. Is the view visible?"
         }
@@ -42,12 +43,8 @@ class DetailsFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = DetailsFragmentBinding.inflate(inflater, container, false)
-        binding.buyFab.setOnClickListener {
-            val bottomSheetFragment = BuyBottomSheetFragment()
-            bottomSheetFragment.show(childFragmentManager, BuyBottomSheetFragment.TAG)
-        }
+    ): View {
+        _binding = BuyBottomSheetFragmentBinding.inflate(inflater, container, false)
         observeCurrentProduct()
         return binding.root
     }
@@ -63,16 +60,21 @@ class DetailsFragment: Fragment() {
     }
 
     private fun populateUi(product: Product) {
-        (activity as MainActivity).setToolbarTitle(product.name)
         with(binding) {
-            priceTv.text = getString(R.string.price_template, product.price)
-            stockTv.text = getString(R.string.stock_template, product.availableAmount)
-            descriptionTv.text = product.description
+            bottomSheetPrice.text = getString(R.string.price_template, product.price)
+            bottomSheetButton.setOnClickListener {
+                Toast.makeText(context, "Buying car", Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TAG = "BuyBottomSheetFragment"
     }
 }
