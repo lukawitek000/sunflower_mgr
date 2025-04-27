@@ -31,10 +31,18 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_productListFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.lukasz.witkowski.schedule.shopxmlviews.DetailsFragment"
         android:label="details_fragment"
         tools:layout="@layout/details_fragment" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.lukasz.witkowski.schedule.shopxmlviews.FilterFragment"
+        android:label="filter_fragment"
+        tools:layout="@layout/filter_fragment" />
 </navigation>

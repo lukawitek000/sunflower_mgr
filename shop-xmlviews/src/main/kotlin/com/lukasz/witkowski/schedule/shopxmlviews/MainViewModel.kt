@@ -52,8 +52,24 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun clearFiltering() {
+
+    }
+
+    fun applyFiltering(minPrice: Float, maxPrice: Float, sortType: SortType) {
+
+    }
+
     enum class BuyingStatus {
         IDLE, LOADING, SUCCESS
+    }
+
+    enum class SortType {
+        PRICE_LOW_TO_HIGH,
+        PRICE_HIGH_TO_LOW,
+        NEWEST_FIRST,
+        OLDEST_FIRST,
+        NONE,
     }
 
 }

@@ -23,12 +23,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.replace
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.ProductListFragmentBinding
@@ -54,8 +52,17 @@ class ProductListFragment : Fragment() {
         (activity as MainActivity).setToolbarTitle("Products")
         setUpSearchView()
         setUpRecyclerView()
+        setUpFilterSort()
         observeData()
         return binding.root
+    }
+
+    private fun setUpFilterSort() {
+        binding.apply {
+            filterIcon.setOnClickListener {
+                findNavController().navigate(R.id.action_productListFragment_to_filterFragment)
+            }
+        }
     }
 
     private fun observeData() {
