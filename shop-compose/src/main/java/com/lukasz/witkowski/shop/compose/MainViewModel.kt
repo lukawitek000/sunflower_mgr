@@ -72,6 +72,26 @@ class MainViewModel : ViewModel() {
     val buyingStatus: StateFlow<BuyingStatus>
         get() = _buyingStatus
 
+    private val _amount = MutableStateFlow("")
+    val amount: StateFlow<String>
+        get() = _amount
+    private val _additionalInformation = MutableStateFlow("")
+    val additionalInformation: StateFlow<String>
+        get() = _additionalInformation
+
+    fun updateAmount(amount: String) {
+        _amount.value = amount
+    }
+
+    fun updateAdditionalInformation(additionalInformation: String) {
+        _additionalInformation.value = additionalInformation
+    }
+
+    fun cleanBottomSheetValues() {
+        _amount.value = ""
+        _additionalInformation.value = ""
+    }
+
     fun updateSearchQuery(query: String) {
         _searchQuery.value = query
     }

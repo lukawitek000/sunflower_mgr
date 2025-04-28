@@ -46,6 +46,7 @@ import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 fun ProductsListScreen(
     viewModel: MainViewModel,
     onNavigateToFiltering: () -> Unit,
+    onNavigateToDetails: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val products by viewModel.displayedProducts.collectAsState()
@@ -61,7 +62,10 @@ fun ProductsListScreen(
         )
         ProductsList(
             products,
-            onProductClicked = {}
+            onProductClicked = {
+                viewModel.selectProduct(it)
+                onNavigateToDetails()
+            }
         )
     }
 }
