@@ -32,19 +32,31 @@ import kotlin.time.Duration.Companion.seconds
 class MainViewModel : ViewModel() {
 
     private val _products = MutableStateFlow(ALL_PRODUCTS)
-    val products: StateFlow<List<Product>>
-        get() = _products
+//    val products: StateFlow<List<Product>>
+//        get() = _products
+    private val initialFiltering = Filtering(
+        minPrice = _products.value.minOf { it.price.toFloat() },
+        maxPrice = _products.value.maxOf { it.price.toFloat() },
+        sortType = SortType.None
+    )
+    val initialPriceFilter = initialFiltering.minPrice..initialFiltering.maxPrice
+    private val _priceFilter = MutableStateFlow(initialPriceFilter)
+    val priceFilter: StateFlow<ClosedFloatingPointRange<Float>>
+        get() = _priceFilter
+    private val _sorting = MutableStateFlow(initialFiltering.sortType)
+    val sorting: StateFlow<SortType>
+        get() = _sorting
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String>
         get() = _searchQuery
-    private val _filterSettings = MutableStateFlow(initialFiltering())
+    private val _filterSettings = MutableStateFlow(initialFiltering)
     val filterSettings: StateFlow<Filtering>
         get() = _filterSettings
 
     val displayedProducts: StateFlow<List<Product>> =
         combine(_products, _searchQuery, _filterSettings) { wholeList, query, filter ->
             filter.filter(wholeList).filter {
-                 it.name.contains(query, ignoreCase = true)
+                it.name.contains(query, ignoreCase = true)
             }
         }.stateIn(
             scope = viewModelScope,
@@ -77,20 +89,24 @@ class MainViewModel : ViewModel() {
     }
 
     fun clearFiltering() {
-        _filterSettings.value = initialFiltering()
+        _filterSettings.value = initialFiltering
+        _priceFilter.value = initialPriceFilter
+        _sorting.value = initialFiltering.sortType
     }
 
-    fun applyFiltering(minPrice: Float, maxPrice: Float, sortType: SortType) {
-        _filterSettings.value = Filtering(minPrice, maxPrice, sortType)
+    fun applyFiltering() {
+        _filterSettings.value =
+            Filtering(_priceFilter.value.start, _priceFilter.value.endInclusive, _sorting.value)
     }
 
-    private fun initialFiltering(): Filtering {
-        return Filtering(
-            minPrice = _products.value.minOf { it.price.toFloat() },
-            maxPrice = _products.value.maxOf { it.price.toFloat() },
-            sortType = SortType.None
-        )
+    fun onSortingChanged(sortType: SortType) {
+        _sorting.value = sortType
     }
+
+    fun onPriceFilterChanged(priceFilter: ClosedFloatingPointRange<Float>) {
+        _priceFilter.value = priceFilter
+    }
+
 
     enum class BuyingStatus {
         IDLE, LOADING, SUCCESS

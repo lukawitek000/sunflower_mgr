@@ -45,6 +45,7 @@ import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 @Composable
 fun ProductsListScreen(
     viewModel: MainViewModel,
+    onNavigateToFiltering: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val products by viewModel.displayedProducts.collectAsState()
@@ -56,7 +57,7 @@ fun ProductsListScreen(
             modifier = Modifier.padding(bottom = 8.dp),
             query = query,
             onQueryChanged = viewModel::updateSearchQuery,
-            onFilterClicked = {}
+            onFilterClicked = onNavigateToFiltering
         )
         ProductsList(
             products,

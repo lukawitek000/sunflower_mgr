@@ -17,16 +17,22 @@
 package com.lukasz.witkowski.shop.compose
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 @Composable
@@ -44,10 +50,21 @@ fun ShopNavHost(
     navController: NavHostController,
     viewModel: MainViewModel,
 ) {
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = backStackEntry?.destination?.route
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Products") })
-        }
+            TopAppBar(
+                title = { Text("Products") },
+                navigationIcon = {
+                    if (currentRoute != Screen.ProductsList.route) {
+                        IconButton(onClick = { navController.popBackStack() }) {
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        }
+                    }
+                }
+            )
+        },
     ) { contentPadding ->
         NavHost(
             modifier = Modifier.padding(contentPadding),
@@ -55,13 +72,23 @@ fun ShopNavHost(
             startDestination = Screen.ProductsList.route
         ) {
             composable(route = Screen.ProductsList.route) {
-                ProductsListScreen(viewModel = viewModel)
+                ProductsListScreen(
+                    viewModel = viewModel,
+                    onNavigateToFiltering = {
+                        navController.navigate(Screen.Filtering.route)
+                    }
+                )
             }
             composable(route = Screen.ProductDetails.route) {
 
             }
             composable(route = Screen.Filtering.route) {
-
+                FilterScreen(
+                    viewModel = viewModel,
+                    navigateBack = {
+                        navController.navigateUp()
+                    }
+                )
             }
 
         }
