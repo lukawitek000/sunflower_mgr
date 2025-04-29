@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
                 android:src="@drawable/placeholder_car"
+                android:contentDescription="@string/car_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -90,6 +91,6 @@
         android:layout_margin="16dp"
         app:backgroundTint="@color/light_orange_yellow_variant"
         app:tint="@null"
-        android:contentDescription="Buy floating action button"
+        android:contentDescription="@string/buy_floating_action_button"
         android:src="@drawable/shop_icon" />
 </FrameLayout>

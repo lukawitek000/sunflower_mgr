@@ -4,4 +4,20 @@
     <string name="stock_template">Available in stock: %d</string>
     <string name="from">From: %.2f €</string>
     <string name="to">To: %.2f €</string>
+    <string name="buying_options">Buying options</string>
+    <string name="amount">Amount</string>
+    <string name="additional_information">Additional information</string>
+    <string name="buy">Buy</string>
+    <string name="car_image">Car image</string>
+    <string name="buy_floating_action_button">Buy floating action button</string>
+    <string name="price">Price</string>
+    <string name="sort_by">Sort by</string>
+    <string name="price_low_to_high">Price: Low to High</string>
+    <string name="price_high_to_low">Price: High to Low</string>
+    <string name="newest_first">Newest first</string>
+    <string name="oldest_first">Oldest first</string>
+    <string name="apply">Apply</string>
+    <string name="clear">Clear</string>
+    <string name="search">Search</string>
+    <string name="filtering_and_sorting_button">Filtering and sorting button</string>
 </resources>
