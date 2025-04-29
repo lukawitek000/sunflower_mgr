@@ -92,7 +92,7 @@ fun ShopNavHost(
                     Icon(
                         painterResource(R.drawable.shop_icon),
                         contentDescription = "Buy",
-                        modifier = Modifier.size(32.dp),
+                        modifier = Modifier.size(24.dp),
                         tint = Color.Unspecified,
                     )
                 }

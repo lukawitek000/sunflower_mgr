@@ -23,14 +23,13 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -47,7 +46,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
@@ -99,6 +100,7 @@ private fun BottomSheet(
     additionalInformation: String,
     updateAdditionalInformation: (String) -> Unit
 ) {
+    var areTextFieldsEnabled by remember { mutableStateOf(true) }
     if (openBottomSheet) {
         ModalBottomSheet(
             onDismissRequest = {
@@ -117,7 +119,8 @@ private fun BottomSheet(
                 )
                 Text(
                     "Price: $carPrice €",
-                    modifier = Modifier.padding(top = 16.dp)
+                    modifier = Modifier.padding(top = 16.dp),
+                    fontSize = 20.sp
                 )
                 OutlinedTextField(
                     modifier = Modifier
@@ -126,7 +129,8 @@ private fun BottomSheet(
                     label = { Text("Amount") },
                     value = amount,
                     onValueChange = updateAmount,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    enabled = areTextFieldsEnabled,
                 )
                 OutlinedTextField(
                     modifier = Modifier
@@ -136,7 +140,8 @@ private fun BottomSheet(
                     value = additionalInformation,
                     onValueChange = updateAdditionalInformation,
                     minLines = 3,
-                    )
+                    enabled = areTextFieldsEnabled
+                )
                 Row(
                     Modifier
                         .fillMaxWidth()
@@ -144,7 +149,10 @@ private fun BottomSheet(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     AnimatingButton(
-                        onButtonClick = onButtonClick,
+                        onButtonClick = {
+                            areTextFieldsEnabled = false
+                            onButtonClick()
+                        },
                         text = "Buy"
                     )
                 }
@@ -159,11 +167,17 @@ private fun AnimatingButton(
     text: String,
     modifier: Modifier = Modifier
 ) {
+    var isButtonEnabled by remember { mutableStateOf(true) }
     var isAnimating by remember { mutableStateOf(false) }
     val infiniteTransition = rememberInfiniteTransition(label = "infinite button animation")
+    val buttonWidthDp = 150.dp
+    val density = LocalDensity.current
+    val buttonWidthPx = remember(density, buttonWidthDp) {
+        with(density) { buttonWidthDp.toPx() }
+    }
 
     val offsetY by animateFloatAsState(
-        targetValue = if (isAnimating) -300f else 0f,
+        targetValue = if (isAnimating) -buttonWidthPx else 0f,
         animationSpec = tween(durationMillis = 500, easing = LinearEasing),
         label = "button vertical movement",
     )
@@ -181,16 +195,19 @@ private fun AnimatingButton(
     Button(
         onClick = {
             isAnimating = true
+            isButtonEnabled = false
             onButtonClick()
         },
-        modifier = modifier.graphicsLayer {
+        modifier = modifier.width(buttonWidthDp).graphicsLayer {
             translationY = offsetY
             rotationZ = rotation
-        }
+        },
+        enabled = isButtonEnabled
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 64.dp),
-            text = text
+            modifier = Modifier.fillMaxWidth(),
+            text = text,
+            textAlign = TextAlign.Center
         )
     }
 }
@@ -225,7 +242,8 @@ private fun ProductDetails(
             )
             Text(
                 modifier = Modifier.padding(top = 8.dp),
-                text = selectedCar.description
+                text = selectedCar.description,
+                fontSize = 16.sp
             )
         }
     }

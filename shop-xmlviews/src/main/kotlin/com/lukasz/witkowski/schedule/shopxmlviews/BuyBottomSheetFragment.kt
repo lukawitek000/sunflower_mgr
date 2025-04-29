@@ -94,16 +94,14 @@ class BuyBottomSheetFragment : BottomSheetDialogFragment() {
             rotatingButton.translationY,
             rotatingButton.translationY + moveUpDistance
         )
-            .apply { duration = 500 } // Adjust duration as needed
+            .apply { duration = 500 }
 
-        // Create rotation animator
         rotateAnimator = ObjectAnimator.ofFloat(rotatingButton, "rotation", 0f, 360f).apply {
             duration = 2000
             repeatCount = ObjectAnimator.INFINITE
             interpolator = LinearInterpolator()
         }
 
-        // Combine the translation and rotation animations
         animatorSet = AnimatorSet().apply {
             playTogether(translationYAnimator, rotateAnimator)
             start()

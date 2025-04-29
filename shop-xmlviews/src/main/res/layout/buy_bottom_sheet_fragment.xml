@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buying options"
+        android:textSize="32sp"
         android:textAppearance="?attr/textAppearanceHeadline6" />
 
     <TextView
@@ -35,16 +36,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textSize="20sp"
         tools:text="Price" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/amount"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Amount"
-        app:endIconMode="clear_text">
+        android:hint="Amount">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -55,11 +56,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/additionalInfo"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:endIconMode="clear_text"
         android:hint="Additional information">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -74,9 +74,8 @@
         android:id="@+id/bottomSheetButton"
         android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         style="@style/Widget.Material3.Button.IconButton.Filled"
-        android:paddingHorizontal="64dp"
         android:layout_gravity="center_horizontal"
         android:text="Buy" />
 
