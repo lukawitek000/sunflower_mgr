@@ -1,7 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Sunflower_mgr" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/dark_orange_yellow</item>
+        <item name="colorPrimaryVariant">@color/dark_orange_yellow_variant</item>
+        <item name="colorOnPrimary">@color/dark_button_text</item>
+        <item name="colorSecondary">@color/dark_orange_yellow_variant</item>
+        <item name="colorSecondaryVariant">@color/dark_orange_yellow_variant</item>
+        <item name="colorOnSecondary">@color/dark_text_primary</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorOnSurface">@color/dark_text_primary</item>
+
+<!--        <item name="topBarColor">@color/dark_orange_yellow</item>-->
+<!--        <item name="statusBarColor">@color/dark_orange_yellow_variant</item>-->
+        <item name="cardBackgroundColor">@color/dark_card</item>
+<!--        <item name="inputTextFieldBackgroundColor">@color/dark_input_background</item>-->
+<!--        <item name="inputTextFieldBorderColor">@color/dark_input_border</item>-->
+<!--        <item name="textColorPrimary">@color/dark_text_primary</item>-->
+<!--        <item name="textColorSecondary">@color/dark_text_secondary</item>-->
+<!--        <item name="iconColor">@color/dark_icon</item>-->
+<!--        <item name="rangeSliderActiveColor">@color/dark_range_slider_active</item>-->
+<!--        <item name="rangeSliderInactiveColor">@color/dark_range_slider_inactive</item>-->
+<!--        <item name="buttonColor">@color/dark_button</item>-->
+<!--        <item name="buttonTextColor">@color/dark_button_text</item>-->
+<!--        <item name="floatingActionButtonColor">@color/dark_floating_action_button</item>-->
+        <item name="backgroundColor">@color/dark_background</item>
+<!--        <item name="surfaceColor">@color/dark_surface</item>-->
     </style>
 </resources>

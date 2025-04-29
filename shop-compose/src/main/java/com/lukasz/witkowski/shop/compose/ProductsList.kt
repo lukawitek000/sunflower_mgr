@@ -28,6 +28,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -105,7 +107,8 @@ fun SearchAndFiltering(
             Icon(
                 painterResource(R.drawable.filter),
                 contentDescription = "Filter",
-                tint = MaterialTheme.colorScheme.primary
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(32.dp)
             )
         }
     }
@@ -165,13 +168,13 @@ fun ProductCard(
                 )
             }
             IconButton(
-                modifier = Modifier.size(32.dp),
                 onClick = { onProductClicked(product) }
             ) {
                 Icon(
                     Icons.Filled.PlayArrow,
                     contentDescription = "More details button",
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(32.dp),
                 )
             }
         }
