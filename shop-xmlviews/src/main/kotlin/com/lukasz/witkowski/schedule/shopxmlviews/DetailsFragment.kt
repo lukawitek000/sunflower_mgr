@@ -25,6 +25,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.DetailsFragmentBinding
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 import kotlinx.coroutines.launch
@@ -68,6 +69,9 @@ class DetailsFragment: Fragment() {
             priceTv.text = getString(R.string.price_template, product.price)
             stockTv.text = getString(R.string.stock_template, product.availableAmount)
             descriptionTv.text = product.description
+            Glide.with(root)
+                .load(product.imageUrl)
+                .into(carIv)
         }
     }
 
