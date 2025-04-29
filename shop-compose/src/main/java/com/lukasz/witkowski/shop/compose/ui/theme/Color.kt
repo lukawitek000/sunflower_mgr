@@ -38,8 +38,7 @@ val LightInputBorder = Color(0xFFBDBDBD) // Light grey for input border
 val LightInputBackground = Color(0xFFFFFFFF) // White for input background
 val LightButton = LightOrangeYellow // Orange-yellow for buttons
 val LightButtonText = Color(0xFFFFFFFF) // White text on buttons
-val LightFloatingActionButton = LightOrangeYellow // Orange-yellow for FAB
-val LightFloatingActionButtonIcon = Color(0xFFFFFFFF) // White icon on FAB
+val LightFloatingActionButton = LightOrangeYellowVariant // Orange-yellow for FAB
 val LightRangeSliderActive = LightOrangeYellow // Orange-yellow for active part of range slider
 val LightRangeSliderInactive = Color(0xFFE0E0E0) // Light grey for inactive part of range slider
 val LightCard = Color(0xFFBDBDBD) // White for the item card
@@ -57,8 +56,7 @@ val DarkInputBorder = Color(0xFF616161) // Medium dark grey for input border
 val DarkInputBackground = Color(0xFF303030) // Darker grey for input background
 val DarkButton = DarkOrangeYellow // Orange-yellow for buttons in dark mode
 val DarkButtonText = Color(0xFF212121) // Dark grey text on buttons
-val DarkFloatingActionButton = DarkOrangeYellow // Orange-yellow for FAB in dark mode
-val DarkFloatingActionButtonIcon = Color(0xFF212121) // Dark grey icon on FAB
+val DarkFloatingActionButton = DarkOrangeYellowVariant // Orange-yellow for FAB in dark mode
 val DarkRangeSliderActive = DarkOrangeYellow // Orange-yellow for active part of range slider in dark mode
 val DarkRangeSliderInactive = Color(0xFF424242) // Dark grey for inactive part of range slider in dark mode
 val DarkCard = Color(0xFF303030) // A darker grey for the item card
@@ -79,7 +77,6 @@ data class AppColors(
     val button: Color,
     val buttonText: Color,
     val floatingActionButton: Color,
-    val floatingActionButtonIcon: Color,
     val background: Color,
     val surface: Color,
 )
@@ -98,7 +95,6 @@ val LightColorPalette = AppColors(
     button = LightButton,
     buttonText = LightButtonText,
     floatingActionButton = LightFloatingActionButton,
-    floatingActionButtonIcon = LightFloatingActionButtonIcon,
     background = LightBackground,
     surface = LightSurface
 )
@@ -117,7 +113,6 @@ val DarkColorPalette = AppColors(
     button = DarkButton,
     buttonText = DarkButtonText,
     floatingActionButton = DarkFloatingActionButton,
-    floatingActionButtonIcon = DarkFloatingActionButtonIcon,
     background = DarkBackground,
     surface = DarkSurface
 )
