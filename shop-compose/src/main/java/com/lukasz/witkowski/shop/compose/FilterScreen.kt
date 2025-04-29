@@ -24,8 +24,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RangeSlider
+import androidx.compose.material3.SliderColors
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -87,7 +90,10 @@ fun PriceSlider(
             modifier = Modifier.padding(top = 8.dp),
             valueRange = initialFiltering,
             value = priceFilter,
-            onValueChange = onValueChange
+            onValueChange = onValueChange,
+            colors = SliderDefaults.colors(
+                inactiveTrackColor =MaterialTheme.colorScheme.outline
+            )
         )
         Row(
             modifier = Modifier.fillMaxWidth(),
