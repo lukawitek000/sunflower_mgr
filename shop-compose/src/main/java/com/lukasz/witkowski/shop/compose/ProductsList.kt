@@ -18,6 +18,7 @@ package com.lukasz.witkowski.shop.compose
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,6 +31,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -45,6 +47,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.Placeholder
+import com.bumptech.glide.integration.compose.placeholder
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 
 @Composable
@@ -123,6 +129,7 @@ fun ProductsList(
     }
 }
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun ProductCard(
     product: Product,
@@ -140,10 +147,11 @@ fun ProductCard(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Image(
-                painterResource(R.drawable.placeholder_car),
+            GlideImage(
+                model = product.imageUrl,
+                contentDescription = "${product.name} image",
                 modifier = Modifier.size(64.dp),
-                contentDescription = "Car photo"
+                failure = placeholder(R.drawable.placeholder_car),
             )
             Column(Modifier
                 .padding(horizontal = 8.dp)

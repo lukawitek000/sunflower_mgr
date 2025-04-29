@@ -24,7 +24,7 @@ val ALL_PRODUCTS = listOf(
         "The Volkswagen Golf 8 represents the latest evolution of this iconic hatchback. Built in 2023, it offers a blend of fuel efficiency, modern technology, and a comfortable driving experience. Its compact size makes it perfect for city commuting, while its spacious interior and versatile cargo area provide practicality for longer journeys. Equipped with advanced safety features and a refined infotainment system, the Golf 8 continues its legacy as a benchmark in its class.",
         3,
         23000.00,
-        "https://unsplash.com/s/photos/volkswagen-golf",
+        "https://images.unsplash.com/photo-1594501975187-d2dc80ad3fe3?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2023,
         BodyStyle.HATCHBACK
     ),
@@ -35,7 +35,7 @@ val ALL_PRODUCTS = listOf(
         "The 2024 BMW 3 Series Sedan upholds its reputation as a premium sports sedan. Known for its engaging driving dynamics, sophisticated design, and high-quality interior, this sedan offers a thrilling yet comfortable ride. Featuring the latest BMW technology, including advanced driver-assistance systems and a state-of-the-art infotainment system, the 3 Series is a compelling choice for those who appreciate both performance and luxury. Available in various engine options and trim levels.",
         2,
         45000.00,
-        "https://unsplash.com/s/photos/bmw-3-series",
+        "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2024,
         BodyStyle.SEDAN
     ),
