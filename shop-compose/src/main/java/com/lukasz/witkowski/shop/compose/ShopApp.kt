@@ -16,6 +16,8 @@
 
 package com.lukasz.witkowski.shop.compose
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -67,6 +69,7 @@ fun ShopNavHost(
     val currentRoute = backStackEntry?.destination?.route
     var openBottomSheet by rememberSaveable { mutableStateOf(false) }
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = {
@@ -83,7 +86,7 @@ fun ShopNavHost(
                         }
                     }
                 },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.secondary
                 )
             )
@@ -104,10 +107,12 @@ fun ShopNavHost(
                 }
             }
         },
-        containerColor = MaterialTheme.colorScheme.background
     ) { contentPadding ->
         NavHost(
-            modifier = Modifier.padding(contentPadding),
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.secondary)
+                .padding(contentPadding)
+                .background(MaterialTheme.colorScheme.background),
             navController = navController,
             startDestination = Screen.ProductsList.route
         ) {
