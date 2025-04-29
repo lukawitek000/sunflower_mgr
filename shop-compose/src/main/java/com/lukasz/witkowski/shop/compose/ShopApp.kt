@@ -16,7 +16,13 @@
 
 package com.lukasz.witkowski.shop.compose
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -37,6 +43,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -73,11 +80,15 @@ fun ShopNavHost(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        stringResource(R.string.products),
-                        Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
-                    )
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(
+                            stringResource(R.string.products),
+                            modifier = Modifier.align(Alignment.Center)
+                        )
+                    }
+
                 },
                 navigationIcon = {
                     if (currentRoute != Screen.ProductsList.route) {
@@ -86,7 +97,7 @@ fun ShopNavHost(
                         }
                     }
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.secondary
                 )
             )
@@ -116,7 +127,11 @@ fun ShopNavHost(
             navController = navController,
             startDestination = Screen.ProductsList.route
         ) {
-            composable(route = Screen.ProductsList.route) {
+            composable(
+                route = Screen.ProductsList.route,
+                enterTransition =  { slideInHorizontally(initialOffsetX = { -it }, animationSpec = tween(300)) },
+                exitTransition =  { slideOutHorizontally(targetOffsetX = { -it }, animationSpec = tween(300)) }
+            ) {
                 ProductsListScreen(
                     viewModel = viewModel,
                     onNavigateToFiltering = {
@@ -127,14 +142,22 @@ fun ShopNavHost(
                     }
                 )
             }
-            composable(route = Screen.ProductDetails.route) {
+            composable(
+                route = Screen.ProductDetails.route,
+                enterTransition =  { slideInHorizontally(initialOffsetX = { it }, animationSpec = tween(300)) },
+                exitTransition =  { slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(300)) }
+            ) {
                 DetailsScreen(
                     viewModel = viewModel,
                     openBottomSheet = openBottomSheet,
                     closeBottomSheet = { openBottomSheet = false }
                 )
             }
-            composable(route = Screen.Filtering.route) {
+            composable(
+                route = Screen.Filtering.route,
+                enterTransition =  { slideInHorizontally(initialOffsetX = { it }, animationSpec = tween(300)) },
+                exitTransition =  { slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(300)) }
+            ) {
                 FilterScreen(
                     viewModel = viewModel,
                     navigateBack = {
