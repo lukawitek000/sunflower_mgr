@@ -15,9 +15,7 @@
         android:background="@color/light_orange_yellow_variant"
         app:titleTextColor="@color/light_text_primary"
         app:navigationIconTint="@color/light_text_primary"
-        app:titleCentered="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:titleCentered="true" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host"
