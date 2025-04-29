@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lukasz.witkowski.schedule.shopxmlviews.model
+package com.lukasz.witkowski.shop.compose.model
 
 val ALL_PRODUCTS = listOf(
     Product(
@@ -24,7 +24,7 @@ val ALL_PRODUCTS = listOf(
         "The Volkswagen Golf 8 represents the latest evolution of this iconic hatchback. Built in 2023, it offers a blend of fuel efficiency, modern technology, and a comfortable driving experience. Its compact size makes it perfect for city commuting, while its spacious interior and versatile cargo area provide practicality for longer journeys. Equipped with advanced safety features and a refined infotainment system, the Golf 8 continues its legacy as a benchmark in its class.",
         3,
         23000.00,
-        "https://unsplash.com/s/photos/volkswagen-golf",
+        "https://images.unsplash.com/photo-1594501975187-d2dc80ad3fe3?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2023,
         BodyStyle.HATCHBACK
     ),
@@ -35,7 +35,7 @@ val ALL_PRODUCTS = listOf(
         "The 2024 BMW 3 Series Sedan upholds its reputation as a premium sports sedan. Known for its engaging driving dynamics, sophisticated design, and high-quality interior, this sedan offers a thrilling yet comfortable ride. Featuring the latest BMW technology, including advanced driver-assistance systems and a state-of-the-art infotainment system, the 3 Series is a compelling choice for those who appreciate both performance and luxury. Available in various engine options and trim levels.",
         2,
         45000.00,
-        "https://unsplash.com/s/photos/bmw-3-series",
+        "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2024,
         BodyStyle.SEDAN
     ),
@@ -46,7 +46,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Toyota RAV4 Hybrid is a popular choice for families and adventurers alike. Combining a fuel-efficient hybrid powertrain with a spacious and comfortable interior, it offers excellent versatility. Its reputation for reliability and strong resale value makes it a practical and dependable SUV. Equipped with Toyota Safety Sense and a user-friendly infotainment system, the RAV4 Hybrid is ready for both daily commutes and weekend getaways.",
         5,
         35000.00,
-        "https://unsplash.com/s/photos/toyota-rav4",
+        "https://media.gettyimages.com/id/1152427256/photo/toyota-rav4-hybrid-on-the-road.jpg?s=612x612&w=0&k=20&c=58VwLX3Sb0WMPhDrI0m_MZLi0Zba3pUxPCA09XHfXJ4=",
         2023,
         BodyStyle.SUV
     ),
@@ -57,20 +57,9 @@ val ALL_PRODUCTS = listOf(
         "The Mazda MX-5 Miata, produced in 2022, remains a beloved two-seater convertible celebrated for its pure driving experience. Its lightweight design, responsive handling, and engaging manual transmission (in many trims) provide an unmatched connection to the road. Perfect for open-air enthusiasts, the Miata offers a timeless design and an affordable entry into the world of sports cars. Its nimble nature and balanced chassis make every drive an enjoyable one.",
         1,
         32000.00,
-        "https://unsplash.com/s/photos/mazda-mx-5",
+        "https://images.unsplash.com/photo-1603739297343-21e40a7e127d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2022,
         BodyStyle.CONVERTIBLE
-    ),
-    Product(
-        "HONDA-ODYSSEY-2021",
-        "Honda Odyssey",
-        "Versatile and spacious family-friendly minivan.",
-        "The 2021 Honda Odyssey is designed with families in mind, offering comfortable seating for up to eight passengers and a multitude of convenience features. Its spacious interior, innovative Magic Slide second-row seats, and available rear entertainment system make long journeys enjoyable for everyone. With a focus on safety and practicality, the Odyssey provides ample cargo space and a smooth, comfortable ride, making it an ideal choice for growing families.",
-        4,
-        38000.00,
-        "https://unsplash.com/s/photos/honda-odyssey",
-        2021,
-        BodyStyle.MINIVAN
     ),
     Product(
         "AUDI-A4-SEDAN-2023",
@@ -79,7 +68,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Audi A4 Sedan exemplifies sophisticated German engineering. Offering a blend of elegant design, a comfortable and well-appointed interior, and advanced technology, the A4 provides a premium driving experience. Its refined engine options deliver a balance of performance and efficiency, while the intuitive MMI infotainment system and available Audi Virtual Cockpit keep you connected and informed. The A4 is a strong contender in the luxury sedan segment.",
         3,
         42000.00,
-        "https://unsplash.com/s/photos/audi-a4",
+        "https://images.unsplash.com/photo-1597007030739-6d2e7172ee5b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2023,
         BodyStyle.SEDAN
     ),
@@ -90,7 +79,7 @@ val ALL_PRODUCTS = listOf(
         "The 2022 Skoda Octavia Combi offers an exceptional combination of practicality and value. Its expansive cargo area makes it ideal for those needing extra space, while the comfortable passenger cabin and efficient engines make it a great all-rounder. Built with a focus on functionality and reliability, the Octavia Combi provides a range of smart features and a comfortable ride, making it a popular choice for families and professionals alike.",
         6,
         27000.00,
-        "https://unsplash.com/s/photos/skoda-octavia",
+        "https://cdn.pixabay.com/photo/2019/07/12/12/37/skoda-4332791_1280.jpg",
         2022,
         BodyStyle.HATCHBACK
     ),
@@ -101,7 +90,7 @@ val ALL_PRODUCTS = listOf(
         "The 2024 Nissan Qashqai is a stylish and efficient compact crossover SUV designed for the demands of urban living. Its sleek exterior design is complemented by a comfortable and well-equipped interior. Offering a balance of agility and practicality, the Qashqai is easy to maneuver in city traffic while still providing enough space for passengers and cargo. With modern safety features and a user-friendly infotainment system, it's a compelling option in the competitive crossover market.",
         4,
         26000.00,
-        "https://unsplash.com/s/photos/nissan-qashqai",
+        "https://images.unsplash.com/photo-1684839371407-17bddcf946d0?q=80&w=3218&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2024,
         BodyStyle.SUV
     ),
@@ -112,20 +101,9 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Fiat 500 Convertible embodies Italian charm and urban agility with the added fun of a retractable soft top. Its iconic design and compact size make it perfect for navigating city streets and enjoying open-air driving. Despite its small footprint, the Fiat 500C offers a surprisingly comfortable interior and a distinctive style that turns heads wherever it goes. It's a delightful choice for those seeking a unique and enjoyable city car.",
         2,
         21000.00,
-        "https://unsplash.com/s/photos/fiat-500-convertible",
+        "https://cdn.pixabay.com/photo/2018/04/04/08/04/car-3289114_1280.jpg",
         2023,
         BodyStyle.CONVERTIBLE
-    ),
-    Product(
-        "CHRYSLER-PACIFICA-2022",
-        "Chrysler Pacifica",
-        "Modern minivan with innovative storage and technology.",
-        "The 2022 Chrysler Pacifica is a modern and sophisticated minivan that prioritizes passenger comfort and convenience. Its innovative Stow 'n Go seating system provides unparalleled flexibility for cargo and passenger arrangements. Equipped with a range of technology features, including a user-friendly infotainment system and available rear-seat entertainment, the Pacifica offers a comfortable and connected experience for the whole family. Its smooth ride and ample space make it a top contender in the minivan segment.",
-        3,
-        40000.00,
-        "https://unsplash.com/s/photos/chrysler-pacifica",
-        2022,
-        BodyStyle.MINIVAN
     ),
     Product(
         "PEUGEOT-508-2023",
@@ -134,7 +112,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Peugeot 508 Sedan offers a compelling blend of elegant design, a comfortable and refined interior, and efficient engine options. Its distinctive styling sets it apart, while the focus on comfort and technology provides a pleasant driving experience. Equipped with modern safety features and a sophisticated infotainment system, the Peugeot 508 is a strong contender in the mid-size sedan segment.",
         2,
         39000.00,
-        "https://unsplash.com/s/photos/peugeot-508",
+        "https://cdn.pixabay.com/photo/2018/04/17/19/43/car-3328477_1280.jpg",
         2023,
         BodyStyle.SEDAN
     ),
@@ -145,7 +123,7 @@ val ALL_PRODUCTS = listOf(
         "The latest generation Opel Astra, produced in 2024, offers a balanced package of practicality, efficiency, and modern technology. Its comfortable interior, user-friendly features, and a range of efficient engines make it a solid choice in the competitive compact hatchback market. With a focus on value and reliability, the Astra is well-suited for daily commutes and longer trips alike.",
         4,
         24000.00,
-        "https://unsplash.com/s/photos/opel-astra",
+        "https://cdn.pixabay.com/photo/2014/07/05/03/42/auto-384543_1280.jpg",
         2024,
         BodyStyle.HATCHBACK
     ),
@@ -156,7 +134,7 @@ val ALL_PRODUCTS = listOf(
         "The 2022 Citroën C5 Aircross stands out in the SUV segment with its emphasis on ride comfort, thanks to its innovative Progressive Hydraulic Cushions suspension system. Offering a spacious and versatile interior, along with a distinctive and modern design, the C5 Aircross provides a relaxed and enjoyable driving experience. Its practical features and comfortable seating make it a great choice for families.",
         3,
         30000.00,
-        "https://unsplash.com/s/photos/citroen-c5-aircross",
+        "https://cdn.pixabay.com/photo/2022/01/29/17/29/citroen-cactus-6978137_1280.jpg",
         2022,
         BodyStyle.SUV
     ),
@@ -167,7 +145,7 @@ val ALL_PRODUCTS = listOf(
         "The 2021 Audi TT Roadster is a compact and stylish two-seater convertible that delivers a sporty driving experience. Its sleek design, high-quality interior, and engaging handling make it a desirable open-top car. Equipped with Audi's virtual cockpit and a range of powerful engines, the TT Roadster offers a blend of performance and premium features for driving enthusiasts.",
         1,
         43000.00,
-        "https://unsplash.com/s/photos/audi-tt-roadster",
+        "https://cdn.pixabay.com/photo/2022/01/11/15/26/vehicle-6930864_1280.jpg",
         2021,
         BodyStyle.CONVERTIBLE
     ),
@@ -178,7 +156,7 @@ val ALL_PRODUCTS = listOf(
         "The 2020 Volkswagen Sharan is a spacious and practical minivan designed to comfortably accommodate up to seven passengers. Its versatile seating arrangements and ample cargo space make it an ideal choice for large families or those needing extra utility. Known for its comfortable ride and robust build quality, the Sharan offers a functional and reliable solution for transporting people and their belongings.",
         2,
         37000.00,
-        "https://unsplash.com/s/photos/volkswagen-sharan",
+        "https://cdn.pixabay.com/photo/2019/02/09/21/50/vw-3986056_1280.jpg",
         2020,
         BodyStyle.MINIVAN
     ),
@@ -189,7 +167,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Volvo S60 Sedan embodies Scandinavian design with its elegant and minimalist styling. Renowned for its commitment to safety, the S60 is equipped with a comprehensive suite of advanced safety features. Its comfortable and technologically advanced interior provides a premium driving experience, while its efficient engines offer a balance of performance and fuel economy.",
         2,
         46000.00,
-        "https://unsplash.com/s/photos/volvo-s60",
+        "https://cdn.pixabay.com/photo/2017/06/12/16/24/volvo-2396040_1280.jpg",
         2023,
         BodyStyle.SEDAN
     ),
@@ -200,7 +178,7 @@ val ALL_PRODUCTS = listOf(
         "The latest generation Seat Leon, produced in 2024, offers a dynamic driving experience with its sporty handling and modern design. Its stylish exterior is matched by a well-equipped and comfortable interior, featuring the latest infotainment and connectivity options. With a range of efficient engines and a focus on youthful appeal, the Leon is a compelling choice in the compact hatchback segment.",
         3,
         25000.00,
-        "https://unsplash.com/s/photos/seat-leon",
+        "https://cdn.pixabay.com/photo/2021/08/16/16/19/car-6550633_1280.jpg",
         2024,
         BodyStyle.HATCHBACK
     ),
@@ -211,7 +189,7 @@ val ALL_PRODUCTS = listOf(
         "The 2022 Subaru Forester is known for its reliability, practicality, and standard all-wheel-drive system, making it a capable choice for various road conditions. Its spacious interior, comfortable ride, and excellent visibility make it a popular SUV for families and outdoor enthusiasts. With a focus on safety and durability, the Forester offers a dependable and versatile driving experience.",
         4,
         32000.00,
-        "https://unsplash.com/s/photos/subaru-forester",
+        "https://images.unsplash.com/photo-1710172405020-db834687e06c?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2022,
         BodyStyle.SUV
     ),
@@ -222,7 +200,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 BMW Z4 Roadster is a sleek and agile two-seater convertible that delivers a thrilling open-top driving experience. Its stylish design, powerful engine options, and precise handling make it a desirable sports car. The premium interior is equipped with the latest BMW technology, providing a luxurious and connected ride for driving enthusiasts.",
         1,
         50000.00,
-        "https://unsplash.com/s/photos/bmw-z4",
+        "https://cdn.pixabay.com/photo/2018/01/03/01/19/auto-3057395_1280.jpg",
         2023,
         BodyStyle.CONVERTIBLE
     ),
@@ -233,7 +211,7 @@ val ALL_PRODUCTS = listOf(
         "The 2021 Toyota Sienna offers a comfortable and spacious interior, making it an excellent choice for families. With available all-wheel drive, it provides added confidence in various weather conditions. Known for its reliability and practicality, the Sienna features a smooth ride and a range of family-friendly amenities, ensuring a comfortable and convenient travel experience.",
         3,
         39000.00,
-        "https://unsplash.com/s/photos/toyota-sienna",
+        "https://cdn.pixabay.com/photo/2016/08/02/15/18/lexus-1563694_1280.jpg",
         2021,
         BodyStyle.MINIVAN
     ),
@@ -244,7 +222,7 @@ val ALL_PRODUCTS = listOf(
         "The 2024 Lexus ES Sedan offers a serene and comfortable driving experience, characterized by its quiet cabin, smooth ride, and refined interior. As a luxury sedan, it boasts premium materials and advanced technology, providing a sophisticated and relaxing environment for both drivers and passengers. Known for its reliability and elegant styling, the ES is a compelling choice in the luxury segment.",
         2,
         47000.00,
-        "https://unsplash.com/s/photos/lexus-es",
+        "https://cdn.pixabay.com/photo/2023/01/12/15/30/car-7714372_1280.jpg",
         2024,
         BodyStyle.SEDAN
     ),
@@ -255,7 +233,7 @@ val ALL_PRODUCTS = listOf(
         "The 2020 Ford Focus (while production varies by region) was a well-regarded compact hatchback known for its practical design, fuel efficiency, and engaging driving dynamics. Offering a comfortable interior and a range of technology features, the Focus was a strong contender in its class, providing a balance of affordability and functionality for everyday use.",
         5,
         22000.00,
-        "https://unsplash.com/s/photos/ford-focus",
+        "https://images.unsplash.com/photo-1708849894321-2c9bc515df0e?q=80&w=3134&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2020,
         BodyStyle.HATCHBACK
     ),
@@ -266,7 +244,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Hyundai Tucson showcases a modern and bold design, coupled with a feature-rich interior and a comfortable ride. Offering a range of powertrain options and advanced technology, the Tucson provides a compelling package in the competitive compact SUV market. Its spacious cabin and user-friendly infotainment system make it a practical choice for individuals and small families.",
         4,
         27000.00,
-        "https://unsplash.com/s/photos/hyundai-tucson",
+        "https://cdn.pixabay.com/photo/2020/04/09/19/08/auto-5022764_1280.jpg",
         2023,
         BodyStyle.SUV
     ),
@@ -277,7 +255,7 @@ val ALL_PRODUCTS = listOf(
         "The 2022 Mercedes-Benz E-Class Convertible offers a sophisticated open-air driving experience, combining elegant styling with a luxurious and technologically advanced interior. Its powerful engine options and smooth ride make it a pleasure to drive, while the premium materials and refined features provide a high level of comfort and sophistication. It's a top-tier choice for those seeking a luxurious convertible.",
         1,
         65000.00,
-        "https://unsplash.com/s/photos/mercedes-e-class-convertible",
+        "https://cdn.pixabay.com/photo/2022/03/04/08/02/car-7046782_1280.jpg",
         2022,
         BodyStyle.CONVERTIBLE
     ),
@@ -288,7 +266,7 @@ val ALL_PRODUCTS = listOf(
         "The 2021 Honda Stepwgn, particularly popular in the Japanese market, is a compact yet surprisingly spacious and versatile minivan. Known for its innovative Waku Waku Gate (a unique tailgate design) and flexible seating arrangements, the Stepwgn offers excellent practicality for families and cargo. Its comfortable ride and efficient engines make it a smart choice in the compact minivan segment.",
         2,
         33000.00,
-        "https://unsplash.com/s/photos/honda-stepwgn",
+        "https://cdn.pixabay.com/photo/2019/12/27/06/05/cartoon-4721755_1280.png",
         2021,
         BodyStyle.MINIVAN
     ),
@@ -299,7 +277,7 @@ val ALL_PRODUCTS = listOf(
         "The 2024 Audi A6 Sedan represents a blend of sophisticated design, advanced technology, and refined performance in the executive sedan class. Its luxurious interior, intuitive MMI infotainment system, and powerful yet efficient engine options provide a premium driving experience. With a focus on comfort and innovation, the A6 is a strong contender for those seeking a high-end sedan.",
         2,
         55000.00,
-        "https://unsplash.com/s/photos/audi-a6",
+        "https://cdn.pixabay.com/photo/2022/12/26/22/55/car-7679963_1280.png",
         2024,
         BodyStyle.SEDAN
     ),
@@ -310,7 +288,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Volkswagen Polo is a compact and agile city hatchback that offers surprising interior space and practicality. Known for its comfortable ride, efficient engines, and solid build quality, the Polo is a popular choice for urban environments and first-time car buyers. Despite its small size, it offers a range of modern features and a pleasant driving experience.",
         6,
         19000.00,
-        "https://unsplash.com/s/photos/volkswagen-polo",
+        "https://images.unsplash.com/photo-1619510827520-ce02ac55f952?q=80&w=3137&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2023,
         BodyStyle.HATCHBACK
     ),
@@ -321,7 +299,7 @@ val ALL_PRODUCTS = listOf(
         "The 2022 Nissan X-Trail is a family-focused SUV offering a spacious interior with available seven-seat configurations and the option of all-wheel drive for enhanced traction. Its comfortable ride, practical features, and ample cargo space make it well-suited for families and those needing versatility for longer journeys and varied road conditions.",
         3,
         31000.00,
-        "https://unsplash.com/s/photos/nissan-x-trail",
+        "https://images.unsplash.com/photo-1551817280-6d59c77ce1b8?q=80&w=3051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2022,
         BodyStyle.SUV
     ),
@@ -332,7 +310,7 @@ val ALL_PRODUCTS = listOf(
         "The 2021 BMW 4 Series Convertible combines elegant styling with a sporty driving experience and a luxurious interior. Its retractable hardtop provides both security and open-air enjoyment. With powerful engine options and precise handling, the 4 Series Convertible is a desirable choice for those seeking a premium and engaging drop-top car.",
         1,
         52000.00,
-        "https://unsplash.com/s/photos/bmw-4-series-convertible",
+        "https://cdn.pixabay.com/photo/2022/04/03/13/22/dare-7108955_1280.jpg",
         2021,
         BodyStyle.CONVERTIBLE
     ),
@@ -343,7 +321,7 @@ val ALL_PRODUCTS = listOf(
         "The 2023 Kia Carnival is a large and comfortable minivan that stands out with its modern and SUV-inspired design. Offering ample space for passengers and cargo, along with a range of convenience and technology features, the Carnival provides a premium minivan experience. Its comfortable seating and smooth ride make it an excellent choice for families and group travel.",
         2,
         38000.00,
-        "https://unsplash.com/s/photos/kia-carnival",
+        "https://images.unsplash.com/photo-1625037669075-e5472e080265?q=80&w=3116&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         2023,
         BodyStyle.MINIVAN
     )

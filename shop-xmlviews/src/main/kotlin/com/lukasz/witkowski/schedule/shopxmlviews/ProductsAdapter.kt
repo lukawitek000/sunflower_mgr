@@ -21,6 +21,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.ProductCardBinding
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 
@@ -35,6 +36,9 @@ class ProductsAdapter(private val onProductClicked: (Product) -> Unit) :
                 nameTv.text = product.name
                 shortDescrptionTv.text = product.shortDescription
                 imageButton.setOnClickListener { onClickListener(product) }
+                Glide.with(root)
+                    .load(product.imageUrl)
+                    .into(productIv)
             }
         }
     }
