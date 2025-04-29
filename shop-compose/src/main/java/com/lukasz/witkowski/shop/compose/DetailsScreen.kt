@@ -16,6 +16,13 @@
 
 package com.lukasz.witkowski.shop.compose
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,14 +39,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(
     viewModel: MainViewModel,
@@ -51,6 +61,11 @@ fun DetailsScreen(
     val carPrice = String.format("%.2f", selectedCar.price)
     val amount by viewModel.amount.collectAsState()
     val additionalInformation by viewModel.additionalInformation.collectAsState()
+    val buyingStatus by viewModel.buyingStatus.collectAsState()
+    if (buyingStatus == MainViewModel.BuyingStatus.SUCCESS) {
+        closeBottomSheet()
+        viewModel.cancelBuyingStatus()
+    }
 
     BottomSheet(
         openBottomSheet = openBottomSheet,
@@ -60,7 +75,8 @@ fun DetailsScreen(
         amount = amount,
         updateAmount = viewModel::updateAmount,
         additionalInformation = additionalInformation,
-        updateAdditionalInformation = viewModel::updateAdditionalInformation
+        updateAdditionalInformation = viewModel::updateAdditionalInformation,
+        onButtonClick = viewModel::buyProduct
     )
     ProductDetails(modifier, carPrice, selectedCar)
 }
@@ -71,6 +87,7 @@ private fun BottomSheet(
     openBottomSheet: Boolean,
     closeBottomSheet: () -> Unit,
     cleanBottomSheetValues: () -> Unit,
+    onButtonClick: () -> Unit,
     carPrice: String,
     amount: String,
     updateAmount: (String) -> Unit,
@@ -121,20 +138,55 @@ private fun BottomSheet(
                         .padding(top = 16.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Button(
-                        onClick = {
-                            closeBottomSheet()
-                            cleanBottomSheetValues()
-                        },
-                    ) {
-                        Text(
-                            modifier = Modifier.padding(horizontal = 64.dp),
-                            text = "Buy"
-                        )
-                    }
+                    AnimatingButton(
+                        onButtonClick = onButtonClick,
+                        text = "Buy"
+                    )
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun AnimatingButton(
+    onButtonClick: () -> Unit,
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    var isAnimating by remember { mutableStateOf(false) }
+    val infiniteTransition = rememberInfiniteTransition(label = "infinite button animation")
+
+    val offsetY by animateFloatAsState(
+        targetValue = if (isAnimating) -300f else 0f,
+        animationSpec = tween(durationMillis = 500, easing = LinearEasing),
+        label = "button vertical movement",
+    )
+
+    val rotation by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = if (isAnimating) 360f else 0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 2000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "button rotation",
+    )
+
+    Button(
+        onClick = {
+            isAnimating = true
+            onButtonClick()
+        },
+        modifier = modifier.graphicsLayer {
+            translationY = offsetY
+            rotationZ = rotation
+        }
+    ) {
+        Text(
+            modifier = Modifier.padding(horizontal = 64.dp),
+            text = text
+        )
     }
 }
 

@@ -50,8 +50,6 @@ class MainViewModel : ViewModel() {
     val searchQuery: StateFlow<String>
         get() = _searchQuery
     private val _filterSettings = MutableStateFlow(initialFiltering)
-    val filterSettings: StateFlow<Filtering>
-        get() = _filterSettings
 
     val displayedProducts: StateFlow<List<Product>> =
         combine(_products, _searchQuery, _filterSettings) { wholeList, query, filter ->
@@ -106,6 +104,10 @@ class MainViewModel : ViewModel() {
             delay(5.seconds)
             _buyingStatus.value = BuyingStatus.SUCCESS
         }
+    }
+
+    fun cancelBuyingStatus() {
+        _buyingStatus.value = BuyingStatus.IDLE
     }
 
     fun clearFiltering() {
