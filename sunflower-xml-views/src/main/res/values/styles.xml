@@ -42,17 +42,4 @@
     <style name="TextAppearance.Sunflower.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
-
-<!--    <style name="TextAppearance.Sunflower.Default">-->
-<!--        -->
-<!--    </style>-->
-
-<!--    <style name="TextAppearance.Sunflower.HeadlineSmall" parent="TextAppearance.MaterialComponents.Headline5">-->
-<!--        <item name="fontFamily">sans-serif</item>-->
-<!--        <item name="android:textSize">24sp</item>-->
-<!--        <item name="fontWeight">400</item>-->
-<!--        <item name="lineHeight">32sp</item>-->
-<!--        <item name="android:letterSpacing">0.0</item>-->
-<!--    </style>-->
-
 </resources>

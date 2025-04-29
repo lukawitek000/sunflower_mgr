@@ -26,7 +26,7 @@
         android:id="@+id/price_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price"
+        android:text="@string/price"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,21 +36,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:labelBehavior="withinBounds"
+        app:labelBehavior="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price_tv"
-        app:tickVisible="false" />
+        app:tickColor="@color/light_orange_yellow"
+        app:tickVisible="false"
+        app:trackColorInactive="@color/light_range_slider_inactive" />
 
     <TextView
         android:id="@+id/sort_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Sort by"
+        android:text="@string/sort_by"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/rangeSlider"
-        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
+        app:layout_constraintTop_toBottomOf="@+id/from_tv" />
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -66,28 +68,28 @@
             style="@style/Widget.Material3.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Price: Low to High" />
+            android:text="@string/price_low_to_high" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             style="@style/Widget.Material3.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Price: High to Low" />
+            android:text="@string/price_high_to_low" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             style="@style/Widget.Material3.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Newest first" />
+            android:text="@string/newest_first" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             style="@style/Widget.Material3.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Oldest first" />
+            android:text="@string/oldest_first" />
 
     </RadioGroup>
 
@@ -95,7 +97,9 @@
         android:id="@+id/apply_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apply"
+        android:text="@string/apply"
+        android:textColor="@android:color/black"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/clean_btn"
@@ -106,10 +110,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Clear"
+        android:text="@string/clear"
+        android:textColor="@android:color/black"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toStartOf="@+id/apply_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+    <TextView
+        android:id="@+id/from_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/from"
+        app:layout_constraintStart_toStartOf="@+id/rangeSlider"
+        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
+
+    <TextView
+        android:id="@+id/to_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/to"
+        app:layout_constraintEnd_toEndOf="@+id/rangeSlider"
+        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

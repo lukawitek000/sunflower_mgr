@@ -26,6 +26,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.slider.RangeSlider
 import com.lukasz.witkowski.schedule.shopxmlviews.databinding.FilterFragmentBinding
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 import kotlinx.coroutines.launch
@@ -79,6 +80,12 @@ class FilterFragment : Fragment() {
             rangeSlider.valueFrom = minValue
             rangeSlider.valueTo = maxValue
             rangeSlider.values = listOf(minValue, maxValue)
+            fromTv.text = getString(R.string.from, minValue)
+            toTv.text = getString(R.string.to, maxValue)
+            rangeSlider.addOnChangeListener(RangeSlider.OnChangeListener { slider, _, _ ->
+                fromTv.text = getString(R.string.from, slider.values.first())
+                toTv.text = getString(R.string.to, slider.values.last())
+            })
         }
     }
 

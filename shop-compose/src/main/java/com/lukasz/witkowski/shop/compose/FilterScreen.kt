@@ -24,14 +24,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RangeSlider
+import androidx.compose.material3.SliderColors
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -80,22 +84,23 @@ fun PriceSlider(
     onValueChange: (ClosedFloatingPointRange<Float>) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val priceFrom = String.format("%.2f", priceFilter.start)
-    val priceTo = String.format("%.2f", priceFilter.endInclusive)
     Column(modifier = modifier) {
-        Text(text = "Price", fontSize = 24.sp)
+        Text(text = stringResource(R.string.price), fontSize = 24.sp)
         RangeSlider(
             modifier = Modifier.padding(top = 8.dp),
             valueRange = initialFiltering,
             value = priceFilter,
-            onValueChange = onValueChange
+            onValueChange = onValueChange,
+            colors = SliderDefaults.colors(
+                inactiveTrackColor =MaterialTheme.colorScheme.outline
+            )
         )
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("From: $priceFrom")
-            Text("To: $priceTo")
+            Text(stringResource(R.string.from, priceFilter.start))
+            Text(stringResource(R.string.to, priceFilter.endInclusive))
         }
     }
 }
@@ -108,7 +113,7 @@ fun Sorting(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        Text(modifier = Modifier.padding(bottom = 8.dp), text = "Sort by", fontSize = 24.sp)
+        Text(modifier = Modifier.padding(bottom = 8.dp), text = stringResource(R.string.sort_by), fontSize = 24.sp)
         radioOptions.forEach {
             SortingOption(
                 sortType = it,
@@ -139,13 +144,14 @@ fun SortingOption(
     }
 }
 
+@Composable
 private fun MainViewModel.SortType.toText(): String {
     return when (this) {
-        MainViewModel.SortType.PriceHighToLow -> "Price: High to Low"
-        MainViewModel.SortType.PriceLowToHigh -> "Price: Low to High"
-        MainViewModel.SortType.NewestFirst -> "Newest first"
-        MainViewModel.SortType.OldestFirst -> "Oldest first"
-        MainViewModel.SortType.None -> "None"
+        MainViewModel.SortType.PriceHighToLow -> stringResource(R.string.price_high_to_low)
+        MainViewModel.SortType.PriceLowToHigh -> stringResource(R.string.price_low_to_high)
+        MainViewModel.SortType.NewestFirst -> stringResource(R.string.newest_first)
+        MainViewModel.SortType.OldestFirst -> stringResource(R.string.newest_first)
+        MainViewModel.SortType.None -> ""
     }
 }
 
@@ -160,10 +166,10 @@ fun ControlButtons(
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         Button(onClick = onClearClicked) {
-            Text(text = "Clear")
+            Text(text = stringResource(R.string.clear))
         }
         Button(onClick = onApplyClicked) {
-            Text(text = "Apply")
+            Text(text = stringResource(R.string.apply))
         }
     }
 }

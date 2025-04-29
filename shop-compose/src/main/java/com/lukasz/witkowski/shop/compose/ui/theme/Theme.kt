@@ -18,6 +18,7 @@ private val DarkColorScheme = darkColorScheme(
     surface = DarkColorPalette.surface,
     onSurface = DarkColorPalette.textPrimary,
     secondaryContainer = DarkColorPalette.card,
+    outline = DarkColorPalette.rangeSliderInactive,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -32,6 +33,7 @@ private val LightColorScheme = lightColorScheme(
     surface = LightColorPalette.surface,
     onSurface = LightColorPalette.textPrimary,
     secondaryContainer = LightColorPalette.card,
+    outline = LightColorPalette.rangeSliderInactive,
 )
 
 @Composable

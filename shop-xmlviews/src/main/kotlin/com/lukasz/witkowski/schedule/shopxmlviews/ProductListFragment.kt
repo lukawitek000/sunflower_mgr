@@ -50,7 +50,7 @@ class ProductListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ProductListFragmentBinding.inflate(inflater, container, false)
-        (activity as MainActivity).setToolbarTitle("Products")
+        (activity as MainActivity).setToolbarTitle(getString(R.string.products))
         setUpSearchView()
         setUpRecyclerView()
         setUpFilterSort()

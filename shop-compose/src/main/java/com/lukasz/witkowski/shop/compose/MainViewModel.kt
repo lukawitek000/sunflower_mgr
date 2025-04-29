@@ -32,8 +32,6 @@ import kotlin.time.Duration.Companion.seconds
 class MainViewModel : ViewModel() {
 
     private val _products = MutableStateFlow(ALL_PRODUCTS)
-//    val products: StateFlow<List<Product>>
-//        get() = _products
     private val initialFiltering = Filtering(
         minPrice = _products.value.minOf { it.price.toFloat() },
         maxPrice = _products.value.maxOf { it.price.toFloat() },

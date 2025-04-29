@@ -16,6 +16,7 @@
 
 package com.lukasz.witkowski.shop.compose
 
+import android.widget.Toast
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -23,14 +24,13 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -39,6 +39,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -47,7 +48,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
@@ -63,13 +68,18 @@ fun DetailsScreen(
     modifier: Modifier = Modifier
 ) {
     val selectedCar by viewModel.selectedProduct.collectAsState()
-    val carPrice = String.format("%.2f", selectedCar.price)
+    val carPrice = stringResource(R.string.price_template, selectedCar.price)
     val amount by viewModel.amount.collectAsState()
     val additionalInformation by viewModel.additionalInformation.collectAsState()
     val buyingStatus by viewModel.buyingStatus.collectAsState()
     if (buyingStatus == MainViewModel.BuyingStatus.SUCCESS) {
         closeBottomSheet()
         viewModel.cancelBuyingStatus()
+        Toast.makeText(
+            LocalContext.current,
+            "Bought successfully",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     BottomSheet(
@@ -99,12 +109,15 @@ private fun BottomSheet(
     additionalInformation: String,
     updateAdditionalInformation: (String) -> Unit
 ) {
+    var areTextFieldsEnabled by remember { mutableStateOf(true) }
     if (openBottomSheet) {
         ModalBottomSheet(
             onDismissRequest = {
                 closeBottomSheet()
                 cleanBottomSheetValues()
             },
+            dragHandle = {},
+            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
         ) {
             Column(
                 Modifier
@@ -112,31 +125,34 @@ private fun BottomSheet(
                     .padding(16.dp)
             ) {
                 Text(
-                    "Buying options",
+                    stringResource(R.string.buying_options),
                     fontSize = 32.sp,
                 )
                 Text(
-                    "Price: $carPrice €",
-                    modifier = Modifier.padding(top = 16.dp)
+                    carPrice,
+                    modifier = Modifier.padding(top = 16.dp),
+                    fontSize = 20.sp
                 )
                 OutlinedTextField(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
-                    label = { Text("Amount") },
+                    label = { Text(stringResource(R.string.amount)) },
                     value = amount,
                     onValueChange = updateAmount,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    enabled = areTextFieldsEnabled,
                 )
                 OutlinedTextField(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
-                    label = { Text("Additional information") },
+                    label = { Text(stringResource(R.string.additional_information)) },
                     value = additionalInformation,
                     onValueChange = updateAdditionalInformation,
                     minLines = 3,
-                    )
+                    enabled = areTextFieldsEnabled
+                )
                 Row(
                     Modifier
                         .fillMaxWidth()
@@ -144,8 +160,11 @@ private fun BottomSheet(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     AnimatingButton(
-                        onButtonClick = onButtonClick,
-                        text = "Buy"
+                        onButtonClick = {
+                            areTextFieldsEnabled = false
+                            onButtonClick()
+                        },
+                        text = stringResource(R.string.buy)
                     )
                 }
             }
@@ -159,11 +178,17 @@ private fun AnimatingButton(
     text: String,
     modifier: Modifier = Modifier
 ) {
+    var isButtonEnabled by remember { mutableStateOf(true) }
     var isAnimating by remember { mutableStateOf(false) }
     val infiniteTransition = rememberInfiniteTransition(label = "infinite button animation")
+    val buttonWidthDp = 150.dp
+    val density = LocalDensity.current
+    val buttonWidthPx = remember(density, buttonWidthDp) {
+        with(density) { buttonWidthDp.toPx() }
+    }
 
     val offsetY by animateFloatAsState(
-        targetValue = if (isAnimating) -300f else 0f,
+        targetValue = if (isAnimating) -buttonWidthPx else 0f,
         animationSpec = tween(durationMillis = 500, easing = LinearEasing),
         label = "button vertical movement",
     )
@@ -181,16 +206,21 @@ private fun AnimatingButton(
     Button(
         onClick = {
             isAnimating = true
+            isButtonEnabled = false
             onButtonClick()
         },
-        modifier = modifier.graphicsLayer {
-            translationY = offsetY
-            rotationZ = rotation
-        }
+        modifier = modifier
+            .width(buttonWidthDp)
+            .graphicsLayer {
+                translationY = offsetY
+                rotationZ = rotation
+            },
+        enabled = isButtonEnabled
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 64.dp),
-            text = text
+            modifier = Modifier.fillMaxWidth(),
+            text = text,
+            textAlign = TextAlign.Center
         )
     }
 }
@@ -210,22 +240,23 @@ private fun ProductDetails(
     ) {
         GlideImage(
             model = selectedCar.imageUrl,
-            contentDescription = "${selectedCar.name} image",
+            contentDescription = stringResource(R.string.car_image),
             modifier = Modifier.fillMaxWidth(),
             failure = placeholder(R.drawable.placeholder_car),
         )
         Column(
             Modifier.padding(8.dp)
         ) {
-            Text(text = "Price: $carPrice €", fontSize = 24.sp)
+            Text(text = carPrice, fontSize = 24.sp)
             Text(
                 modifier = Modifier.padding(top = 8.dp),
-                text = "Available in stock: ${selectedCar.availableAmount}",
+                text = stringResource(R.string.stock_template, selectedCar.availableAmount),
                 fontSize = 24.sp
             )
             Text(
                 modifier = Modifier.padding(top = 8.dp),
-                text = selectedCar.description
+                text = selectedCar.description,
+                fontSize = 16.sp
             )
         }
     }

@@ -16,9 +16,7 @@
 
 package com.lukasz.witkowski.shop.compose
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,32 +29,33 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
+import com.lukasz.witkowski.shop.compose.model.ALL_PRODUCTS
 import com.lukasz.witkowski.shop.compose.model.Product
 
 @Composable
 fun ProductsListScreen(
     viewModel: MainViewModel,
     onNavigateToFiltering: () -> Unit,
-    onNavigateToDetails: () -> Unit,
+    onNavigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val products by viewModel.displayedProducts.collectAsState()
@@ -76,7 +75,7 @@ fun ProductsListScreen(
             products,
             onProductClicked = {
                 viewModel.selectProduct(it)
-                onNavigateToDetails()
+                onNavigateToDetails(it.name)
             }
         )
     }
@@ -97,15 +96,16 @@ fun SearchAndFiltering(
             modifier = Modifier.weight(1f),
             value = query,
             onValueChange = onQueryChanged,
-            label = { Text("Search") },
+            label = { Text(stringResource(R.string.search)) },
         )
         IconButton(
             onClick = onFilterClicked
         ) {
             Icon(
                 painterResource(R.drawable.filter),
-                contentDescription = "Filter",
-                tint = MaterialTheme.colorScheme.primary
+                contentDescription = stringResource(R.string.filtering_and_sorting_button),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(32.dp)
             )
         }
     }
@@ -148,13 +148,15 @@ fun ProductCard(
         ) {
             GlideImage(
                 model = product.imageUrl,
-                contentDescription = "${product.name} image",
+                contentDescription = stringResource(R.string.car_image),
                 modifier = Modifier.size(64.dp),
                 failure = placeholder(R.drawable.placeholder_car),
             )
-            Column(Modifier
-                .padding(horizontal = 8.dp)
-                .weight(1f)) {
+            Column(
+                Modifier
+                    .padding(horizontal = 8.dp)
+                    .weight(1f)
+            ) {
                 Text(product.name, fontSize = 24.sp)
                 Text(
                     product.shortDescription,
@@ -169,11 +171,21 @@ fun ProductCard(
                 onClick = { onProductClicked(product) }
             ) {
                 Icon(
-                    Icons.Filled.PlayArrow,
-                    contentDescription = "More details button",
-                    tint = MaterialTheme.colorScheme.primary
+                    painterResource(R.drawable.arrow_right),
+                    contentDescription = stringResource(R.string.more_details),
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(32.dp)
                 )
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun ProductCardPreview() {
+    ProductCard(
+        product = ALL_PRODUCTS.first(),
+        onProductClicked = {}
+    )
 }

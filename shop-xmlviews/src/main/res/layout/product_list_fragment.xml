@@ -19,19 +19,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00FF00"
     android:padding="0dp"
     tools:context=".ProductListFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_bar"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_marginTop="16dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Search"
+        android:hint="@string/search"
         android:layout_margin="8dp"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/filter_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -51,6 +49,8 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/filter"
+        android:contentDescription="@string/filtering_and_sorting_button"
+        app:tint="@color/light_orange_yellow"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/search_bar" />
@@ -60,7 +60,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="8dp"
-        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
