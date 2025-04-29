@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Sunflower_mgrTheme {
+            Sunflower_mgrTheme() {
                 ShopApp()
             }
         }

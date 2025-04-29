@@ -24,15 +24,19 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -70,22 +74,29 @@ fun ShopNavHost(
                             Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                         }
                     }
-                }
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
             )
         },
         floatingActionButton = {
             if (currentRoute == Screen.ProductDetails.route) {
                 FloatingActionButton(
                     modifier = Modifier.size(56.dp),
-                    onClick = { openBottomSheet = true }
+                    onClick = { openBottomSheet = true },
+                    containerColor = MaterialTheme.colorScheme.secondary
                 ) {
                     Icon(
                         painterResource(R.drawable.shop_icon),
-                        contentDescription = "Buy"
+                        contentDescription = "Buy",
+                        modifier = Modifier.size(32.dp),
+                        tint = Color.Unspecified,
                     )
                 }
             }
-        }
+        },
+        containerColor = MaterialTheme.colorScheme.background
     ) { contentPadding ->
         NavHost(
             modifier = Modifier.padding(contentPadding),

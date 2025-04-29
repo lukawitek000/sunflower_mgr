@@ -29,17 +29,22 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
 
 @Composable
@@ -52,7 +57,9 @@ fun ProductsListScreen(
     val products by viewModel.displayedProducts.collectAsState()
     val query by viewModel.searchQuery.collectAsState()
     Column(
-        modifier = modifier.fillMaxSize().padding(8.dp)
+        modifier = modifier
+            .fillMaxSize()
+            .padding(8.dp)
     ) {
         SearchAndFiltering(
             modifier = Modifier.padding(bottom = 8.dp),
@@ -79,17 +86,22 @@ fun SearchAndFiltering(
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         OutlinedTextField(
             modifier = Modifier.weight(1f),
             value = query,
             onValueChange = onQueryChanged,
-            label = { Text("Search") }
+            label = { Text("Search") },
         )
         IconButton(
             onClick = onFilterClicked
         ) {
-            Icon(painterResource(R.drawable.filter), contentDescription = "Filter")
+            Icon(
+                painterResource(R.drawable.filter),
+                contentDescription = "Filter",
+                tint = MaterialTheme.colorScheme.primary
+            )
         }
     }
 
@@ -117,7 +129,12 @@ fun ProductCard(
     onProductClicked: (Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Card(modifier = modifier) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
+        )
+    ) {
         Row(
             modifier = Modifier.padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -128,15 +145,27 @@ fun ProductCard(
                 modifier = Modifier.size(64.dp),
                 contentDescription = "Car photo"
             )
-            Column(Modifier.padding(horizontal = 8.dp).weight(1f)) {
-                Text(product.name)
-                Text(product.shortDescription)
+            Column(Modifier
+                .padding(horizontal = 8.dp)
+                .weight(1f)) {
+                Text(product.name, fontSize = 24.sp)
+                Text(
+                    product.shortDescription,
+                    modifier = Modifier.padding(top = 4.dp),
+                    fontSize = 16.sp,
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
             IconButton(
                 modifier = Modifier.size(32.dp),
                 onClick = { onProductClicked(product) }
             ) {
-                Icon(Icons.Filled.PlayArrow, contentDescription = "More details button")
+                Icon(
+                    Icons.Filled.PlayArrow,
+                    contentDescription = "More details button",
+                    tint = MaterialTheme.colorScheme.primary
+                )
             }
         }
     }
