@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,13 @@
  * limitations under the License.
  */
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-}
+package com.lukasz.witkowski.shop.compose
 
-dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    google()
-    mavenCentral()
-  }
-}
+sealed class Screen(
+    val route: String
+) {
+    data object ProductsList : Screen("productsList")
+    data object ProductDetails : Screen("productDetails")
+    data object Filtering : Screen("filtering")
 
-include(":app")
-include(":macrobenchmark")
-include(":sunflower-xml-views")
-include(":common")
-include(":shop-xmlviews")
-include(":shop-compose")
+}
