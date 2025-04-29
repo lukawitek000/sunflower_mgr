@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lukasz.witkowski.schedule.shopxmlviews.model
+package com.lukasz.witkowski.shop.compose.model
 
 val ALL_PRODUCTS = listOf(
     Product(

@@ -18,8 +18,8 @@ package com.lukasz.witkowski.shop.compose
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lukasz.witkowski.schedule.shopxmlviews.model.ALL_PRODUCTS
-import com.lukasz.witkowski.schedule.shopxmlviews.model.Product
+import com.lukasz.witkowski.shop.compose.model.ALL_PRODUCTS
+import com.lukasz.witkowski.shop.compose.model.Product
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
