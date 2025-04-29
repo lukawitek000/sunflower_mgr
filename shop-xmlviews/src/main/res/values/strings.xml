@@ -2,4 +2,6 @@
     <string name="app_name">ShopXmlViews</string>
     <string name="price_template">Price: %.2f €</string>
     <string name="stock_template">Available in stock: %d</string>
+    <string name="from">From: %.2f €</string>
+    <string name="to">To: %.2f €</string>
 </resources>

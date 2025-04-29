@@ -36,11 +36,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:labelBehavior="withinBounds"
+        app:labelBehavior="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price_tv"
-        app:tickVisible="false" />
+        app:tickColor="@color/light_orange_yellow"
+        app:tickVisible="false"
+        app:trackColorInactive="@color/light_range_slider_inactive" />
 
     <TextView
         android:id="@+id/sort_tv"
@@ -50,7 +52,7 @@
         android:text="Sort by"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/rangeSlider"
-        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
+        app:layout_constraintTop_toBottomOf="@+id/from_tv" />
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -111,5 +113,21 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+    <TextView
+        android:id="@+id/from_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/from"
+        app:layout_constraintStart_toStartOf="@+id/rangeSlider"
+        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
+
+    <TextView
+        android:id="@+id/to_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/to"
+        app:layout_constraintEnd_toEndOf="@+id/rangeSlider"
+        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
