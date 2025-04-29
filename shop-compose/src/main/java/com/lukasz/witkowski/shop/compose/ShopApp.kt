@@ -29,7 +29,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -39,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -69,7 +69,13 @@ fun ShopNavHost(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Products", Modifier.fillMaxWidth(), textAlign = TextAlign.Center) },
+                title = {
+                    Text(
+                        stringResource(R.string.products),
+                        Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center
+                    )
+                },
                 navigationIcon = {
                     if (currentRoute != Screen.ProductsList.route) {
                         IconButton(onClick = { navController.popBackStack() }) {
@@ -91,7 +97,7 @@ fun ShopNavHost(
                 ) {
                     Icon(
                         painterResource(R.drawable.shop_icon),
-                        contentDescription = "Buy",
+                        contentDescription = stringResource(R.string.buy),
                         modifier = Modifier.size(24.dp),
                         tint = Color.Unspecified,
                     )
@@ -131,8 +137,6 @@ fun ShopNavHost(
                     }
                 )
             }
-
         }
     }
-
 }

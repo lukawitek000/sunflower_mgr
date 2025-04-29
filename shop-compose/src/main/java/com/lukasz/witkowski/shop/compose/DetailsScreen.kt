@@ -47,6 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -64,7 +65,7 @@ fun DetailsScreen(
     modifier: Modifier = Modifier
 ) {
     val selectedCar by viewModel.selectedProduct.collectAsState()
-    val carPrice = String.format("%.2f", selectedCar.price)
+    val carPrice = stringResource(R.string.price_template, selectedCar.price)
     val amount by viewModel.amount.collectAsState()
     val additionalInformation by viewModel.additionalInformation.collectAsState()
     val buyingStatus by viewModel.buyingStatus.collectAsState()
@@ -114,11 +115,11 @@ private fun BottomSheet(
                     .padding(16.dp)
             ) {
                 Text(
-                    "Buying options",
+                    stringResource(R.string.buying_options),
                     fontSize = 32.sp,
                 )
                 Text(
-                    "Price: $carPrice €",
+                    carPrice,
                     modifier = Modifier.padding(top = 16.dp),
                     fontSize = 20.sp
                 )
@@ -126,7 +127,7 @@ private fun BottomSheet(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
-                    label = { Text("Amount") },
+                    label = { Text(stringResource(R.string.amount)) },
                     value = amount,
                     onValueChange = updateAmount,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -136,7 +137,7 @@ private fun BottomSheet(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
-                    label = { Text("Additional information") },
+                    label = { Text(stringResource(R.string.additional_information)) },
                     value = additionalInformation,
                     onValueChange = updateAdditionalInformation,
                     minLines = 3,
@@ -153,7 +154,7 @@ private fun BottomSheet(
                             areTextFieldsEnabled = false
                             onButtonClick()
                         },
-                        text = "Buy"
+                        text = stringResource(R.string.buy)
                     )
                 }
             }
@@ -198,10 +199,12 @@ private fun AnimatingButton(
             isButtonEnabled = false
             onButtonClick()
         },
-        modifier = modifier.width(buttonWidthDp).graphicsLayer {
-            translationY = offsetY
-            rotationZ = rotation
-        },
+        modifier = modifier
+            .width(buttonWidthDp)
+            .graphicsLayer {
+                translationY = offsetY
+                rotationZ = rotation
+            },
         enabled = isButtonEnabled
     ) {
         Text(
@@ -227,17 +230,17 @@ private fun ProductDetails(
     ) {
         GlideImage(
             model = selectedCar.imageUrl,
-            contentDescription = "${selectedCar.name} image",
+            contentDescription = stringResource(R.string.car_image),
             modifier = Modifier.fillMaxWidth(),
             failure = placeholder(R.drawable.placeholder_car),
         )
         Column(
             Modifier.padding(8.dp)
         ) {
-            Text(text = "Price: $carPrice €", fontSize = 24.sp)
+            Text(text = carPrice, fontSize = 24.sp)
             Text(
                 modifier = Modifier.padding(top = 8.dp),
-                text = "Available in stock: ${selectedCar.availableAmount}",
+                text = stringResource(R.string.stock_template, selectedCar.availableAmount),
                 fontSize = 24.sp
             )
             Text(
