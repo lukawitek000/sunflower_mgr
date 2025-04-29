@@ -55,7 +55,7 @@ import com.lukasz.witkowski.shop.compose.model.Product
 fun ProductsListScreen(
     viewModel: MainViewModel,
     onNavigateToFiltering: () -> Unit,
-    onNavigateToDetails: () -> Unit,
+    onNavigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val products by viewModel.displayedProducts.collectAsState()
@@ -75,7 +75,7 @@ fun ProductsListScreen(
             products,
             onProductClicked = {
                 viewModel.selectProduct(it)
-                onNavigateToDetails()
+                onNavigateToDetails(it.name)
             }
         )
     }
