@@ -16,6 +16,7 @@
 
 package com.lukasz.witkowski.shop.compose
 
+import android.widget.Toast
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -46,6 +47,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -72,6 +74,11 @@ fun DetailsScreen(
     if (buyingStatus == MainViewModel.BuyingStatus.SUCCESS) {
         closeBottomSheet()
         viewModel.cancelBuyingStatus()
+        Toast.makeText(
+            LocalContext.current,
+            "Bought successfully",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     BottomSheet(
